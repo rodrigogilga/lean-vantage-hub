@@ -132,7 +132,7 @@ export default function Home() {
             {/* Hero visual — real image */}
             <div className="flex-1 w-full max-w-lg lg:max-w-none animate-fade-up delay-200">
               <div
-                className="rounded-2xl overflow-hidden shadow-[0_20px_40px_-8px_hsl(237_35%_26%/0.15)]"
+                className="rounded-2xl overflow-hidden transition-all duration-300 shadow-[0_20px_40px_-8px_hsl(237_35%_26%/0.15)] hover:scale-[1.03] hover:shadow-[0_28px_52px_-8px_hsl(237_35%_26%/0.28)]"
                 style={{ background: '#E8EBF2' }}
               >
                 <img

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Mail, Phone } from 'lucide-react'
-import logoLV from '@/assets/logo-lv.png'
+import logoLV from '/images/logo.PNG'
 
 export default function Footer() {
   return (
@@ -17,7 +17,7 @@ export default function Footer() {
               <img
                 src={logoLV}
                 alt="Leanvan logo"
-                className="h-8 w-8 object-contain brightness-0 invert"
+                className="h-9 w-auto object-contain"
               />
               <span className="text-xl font-bold tracking-tight">Leanvan</span>
             </div>

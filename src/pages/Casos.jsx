@@ -1,10 +1,15 @@
 import { Bot, Zap, Plug, BarChart3 } from 'lucide-react'
 import CTASection from '../components/CTASection'
 import Reveal from '../components/Reveal'
+import imgWhatsapp from '/images/whatsapp-agent.jp.jpg'
+import imgOnboarding from '/images/onboarding-clientes.jpg'
+import imgSincronizacion from '/images/sincronizacion-ventas.jpg'
+import imgReportes from '/images/reportes-operacion.jpg'
 
 const casos = [
   {
     icon: Bot,
+    img: imgWhatsapp,
     title: 'Agente de atención en WhatsApp',
     description:
       'Agente de IA que responde consultas, califica prospectos y agenda citas por WhatsApp con reglas personalizadas y escalamiento a una persona cuando se requiere.',
@@ -12,6 +17,7 @@ const casos = [
   },
   {
     icon: Zap,
+    img: imgOnboarding,
     title: 'Onboarding de clientes',
     description:
       'Flujo automatizado que envía documentos, solicita información, crea registros y activa notificaciones al equipo para iniciar el servicio más rápido y con menos seguimiento manual.',
@@ -19,6 +25,7 @@ const casos = [
   },
   {
     icon: Plug,
+    img: imgSincronizacion,
     title: 'Sincronización de ventas y operación',
     description:
       'Integración entre CRM, hojas de cálculo y otros sistemas para mantener datos de clientes, pedidos y seguimiento actualizados sin recaptura manual.',
@@ -26,6 +33,7 @@ const casos = [
   },
   {
     icon: BarChart3,
+    img: imgReportes,
     title: 'Reportes automáticos de operación',
     description:
       'Generación y envío automático de reportes diarios o semanales con métricas clave de operación para seguimiento interno y toma de decisiones más rápida.',
@@ -62,24 +70,18 @@ export default function Casos() {
       <section className="py-16 md:py-24 px-4" style={{ background: '#F0F2F8' }}>
         <div className="container mx-auto max-w-5xl">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {casos.map(({ icon: Icon, title, description, result }, i) => (
+            {casos.map(({ icon: Icon, img, title, description, result }, i) => (
               <Reveal key={title} delay={i * 0.1}>
                 <div
                   className="rounded-2xl overflow-hidden border h-full flex flex-col transition-all duration-300 shadow-[0_2px_8px_0_hsl(237_35%_26%/0.06)] hover:scale-[1.03] hover:shadow-[0_14px_32px_-6px_hsl(237_35%_26%/0.18)]"
                   style={{ background: '#ffffff', borderColor: 'hsl(228,14%,89%)' }}
                 >
-                  {/* Image placeholder */}
-                  <div
-                    className="w-full flex items-center justify-center"
-                    style={{ background: '#E8EAF0', height: '180px' }}
-                  >
-                    <div
-                      className="w-16 h-16 rounded-2xl flex items-center justify-center"
-                      style={{ backgroundColor: 'hsl(237,35%,26%)', opacity: 0.15 }}
-                    />
-                    <Icon
-                      size={40}
-                      style={{ color: 'hsl(237,35%,26%)', position: 'absolute', opacity: 0.5 }}
+                  {/* Image */}
+                  <div className="w-full overflow-hidden" style={{ height: '240px', background: '#EEF0F8' }}>
+                    <img
+                      src={img}
+                      alt={title}
+                      className="w-full h-full object-contain"
                     />
                   </div>
 
