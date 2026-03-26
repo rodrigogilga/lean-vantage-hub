@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Mail, Phone, CheckCircle, AlertCircle } from 'lucide-react'
+import { Mail, Phone, CheckCircle, AlertCircle, ChevronDown } from 'lucide-react'
 
 const WEBHOOK_URL = 'https://test-n8n.9fkt0y.easypanel.host/webhook/lovable-lead'
 
@@ -50,20 +50,23 @@ export default function Contacto() {
       <link rel="canonical" href="https://www.leanvan.cloud/contacto" />
 
       {/* Header */}
-      <div className="py-14 md:py-20 px-4" style={{ backgroundColor: '#1a2252' }}>
+      <div
+        className="text-white py-12 md:py-16 px-4"
+        style={{ background: 'var(--gradient-hero)' }}
+      >
         <div className="container mx-auto text-center">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-3 tracking-tight">
-            Cuéntanos tu proyecto
+          <h1 className="text-3xl md:text-4xl font-bold mb-3 tracking-tight animate-fade-up">
+            Contacto
           </h1>
-          <p className="text-lg text-white/70 max-w-2xl mx-auto">
-            Te proponemos un plan con impacto y tiempos
+          <p className="text-lg opacity-85 max-w-2xl mx-auto leading-relaxed animate-fade-up delay-150">
+            Cuéntanos tu proyecto y te proponemos un plan con impacto y tiempos
           </p>
         </div>
       </div>
 
       {/* Main */}
-      <section className="py-14 md:py-20 px-4" style={{ backgroundColor: '#F0F2F8' }}>
-        <div className="container mx-auto max-w-5xl">
+      <section className="py-14 md:py-20 px-4" style={{ backgroundColor: '#ffffff' }}>
+        <div className="container mx-auto max-w-3xl">
           <div className="grid md:grid-cols-5 gap-10 md:gap-14">
 
             {/* Form - left */}
@@ -81,7 +84,7 @@ export default function Contacto() {
                   <input
                     id={id} name={id} type={type || 'text'} value={form[id]}
                     onChange={handleChange} required={required} placeholder={placeholder}
-                    className="w-full px-4 py-2.5 text-sm rounded-lg border outline-none transition-all focus:ring-2 focus:ring-[#1a2252]/20 focus:border-[#1a2252]/40"
+                    className="w-full px-4 py-2.5 text-sm rounded-lg border outline-none transition-all focus:ring-2 focus:ring-[#1a2252]/15 focus:border-[#1a2252]"
                     style={{ borderColor: '#d1d5e0', background: 'white', color: '#1a2252' }}
                   />
                 </div>
@@ -92,16 +95,23 @@ export default function Contacto() {
                 <label htmlFor="need" className="block text-sm font-medium mb-1.5" style={{ color: '#1a2252' }}>
                   ¿Qué necesitas?
                 </label>
-                <select
-                  id="need" name="need" value={form.need} onChange={handleChange}
-                  className="w-full px-4 py-2.5 text-sm rounded-lg border outline-none transition-all focus:ring-2 focus:ring-[#1a2252]/20 focus:border-[#1a2252]/40 appearance-none"
-                  style={{ borderColor: '#d1d5e0', background: 'white', color: form.need ? '#1a2252' : '#8890a4' }}
-                >
-                  <option value="" disabled>Selecciona una opción</option>
-                  {needOptions.map((opt) => (
-                    <option key={opt} value={opt}>{opt}</option>
-                  ))}
-                </select>
+                <div className="relative">
+                  <select
+                    id="need" name="need" value={form.need} onChange={handleChange}
+                    className="w-full px-4 py-2.5 pr-10 text-sm rounded-lg border outline-none transition-all focus:ring-2 focus:ring-[#1a2252]/15 focus:border-[#1a2252] appearance-none cursor-pointer"
+                    style={{ borderColor: '#d1d5e0', background: 'white', color: form.need ? '#1a2252' : '#8890a4' }}
+                  >
+                    <option value="" disabled>Selecciona una opción</option>
+                    {needOptions.map((opt) => (
+                      <option key={opt} value={opt}>{opt}</option>
+                    ))}
+                  </select>
+                  <ChevronDown
+                    size={16}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"
+                    style={{ color: '#8890a4' }}
+                  />
+                </div>
               </div>
 
               {/* Textarea */}

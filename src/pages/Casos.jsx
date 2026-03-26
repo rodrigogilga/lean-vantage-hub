@@ -88,9 +88,9 @@ export default function Casos() {
 
                 {/* Content */}
                 <div
-                  className="flex-1 rounded-2xl p-6 border"
+                  className="flex-1 rounded-2xl p-6 border transition-all duration-300 shadow-[0_2px_8px_0_hsl(237_35%_26%/0.06)] hover:scale-[1.03] hover:shadow-[0_14px_32px_-6px_hsl(237_35%_26%/0.18)]"
                   style={{
-                    background: 'hsl(230,33%,97%)',
+                    background: '#ffffff',
                     borderColor: 'hsl(228,14%,89%)',
                   }}
                 >

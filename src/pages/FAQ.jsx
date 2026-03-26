@@ -50,7 +50,7 @@ function FAQItem({ question, answer }) {
 
   return (
     <div
-      className="border rounded-xl overflow-hidden transition-all duration-200"
+      className="border rounded-xl overflow-hidden transition-all duration-300 shadow-[0_1px_6px_0_hsl(237_35%_26%/0.05)] hover:scale-[1.02] hover:shadow-[0_8px_20px_-4px_hsl(237_35%_26%/0.14)]"
       style={{ borderColor: 'hsl(228,14%,89%)' }}
     >
       <button

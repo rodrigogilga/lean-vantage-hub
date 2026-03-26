@@ -51,41 +51,36 @@ export default function Metodologia() {
       </div>
 
       {/* Steps */}
-      <section className="py-16 md:py-24 px-4 bg-white">
+      <section className="py-16 md:py-24 px-4" style={{ background: '#F0F2F8' }}>
         <div className="container mx-auto max-w-4xl">
-          <div className="space-y-12">
+          <div className="space-y-6">
             {steps.map(({ icon: Icon, number, title, description }, i) => (
               <div
                 key={number}
-                className="flex flex-col md:flex-row gap-8 items-start animate-fade-up"
-                style={{ animationDelay: `${i * 0.15}s` }}
+                className="rounded-2xl p-6 border border-[hsl(228,14%,89%)] flex items-start gap-5 transition-all duration-300 shadow-[0_2px_8px_0_hsl(237_35%_26%/0.06)] hover:scale-[1.02] hover:border-[hsl(237,35%,26%)] hover:shadow-[0_14px_32px_-6px_hsl(237_35%_26%/0.18)] animate-fade-up"
+                style={{
+                  background: '#ffffff',
+                  animationDelay: `${i * 0.15}s`,
+                }}
               >
-                {/* Icon + number */}
-                <div className="flex-shrink-0 flex flex-col items-center gap-3">
-                  <div
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-[0_4px_14px_-3px_hsl(237_35%_26%/0.18)]"
-                    style={{ background: 'var(--gradient-hero)' }}
-                  >
-                    <Icon size={24} className="text-white" />
-                  </div>
-                  <span
-                    className="text-3xl font-bold opacity-20"
-                    style={{ color: 'hsl(237,35%,26%)' }}
-                  >
-                    {number}
-                  </span>
+                {/* Icon */}
+                <div
+                  className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center"
+                  style={{ backgroundColor: 'hsl(237,35%,26%)' }}
+                >
+                  <Icon size={22} className="text-white" />
                 </div>
 
                 {/* Content */}
-                <div
-                  className="flex-1 rounded-2xl p-6 border"
-                  style={{
-                    background: 'hsl(230,33%,97%)',
-                    borderColor: 'hsl(228,14%,89%)',
-                  }}
-                >
+                <div className="flex-1 min-w-0">
+                  <p
+                    className="text-xs font-semibold uppercase tracking-widest mb-1"
+                    style={{ color: 'hsl(233,18%,58%)' }}
+                  >
+                    Paso {number}
+                  </p>
                   <h2
-                    className="font-bold text-xl mb-3 tracking-tight"
+                    className="font-bold text-lg mb-1.5 tracking-tight"
                     style={{ color: 'hsl(237,35%,26%)' }}
                   >
                     {title}

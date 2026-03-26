@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Bot, Zap, Plug, LayoutDashboard, Search } from 'lucide-react'
+import { ArrowRight, Bot, Cpu, Zap, Plug, LayoutDashboard, Search } from 'lucide-react'
 import CTASection from '../components/CTASection'
 import heroImg from '@/assets/hero-illustration.jpg'
 
@@ -11,7 +11,7 @@ const pillars = [
       'Mapeamos tu operación, detectamos cuellos de botella y definimos un plan de automatización medible.',
   },
   {
-    icon: Zap,
+    icon: Cpu,
     title: 'Automatización con IA',
     description:
       'Flujos inteligentes para tareas repetitivas, aprobaciones, alertas y operaciones internas.',
@@ -109,7 +109,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center pt-1 animate-fade-up delay-300">
                 <Link
                   to="/contacto"
-                  className="inline-flex items-center gap-2 px-8 py-3 rounded-lg text-white font-semibold text-base transition-all duration-250 hover:scale-[1.03] hover:shadow-lg"
+                  className="inline-flex items-center gap-2 px-8 py-3 rounded-lg text-white font-semibold text-base transition-all duration-300 hover:scale-[1.04] hover:shadow-[0_8px_20px_-4px_hsl(237_35%_26%/0.4)]"
                   style={{ background: 'hsl(237,35%,26%)' }}
                 >
                   Contáctanos
@@ -117,7 +117,7 @@ export default function Home() {
                 </Link>
                 <Link
                   to="/casos-de-uso"
-                  className="inline-flex items-center gap-2 px-8 py-3 rounded-lg font-semibold text-base border-2 transition-all duration-250 hover:scale-[1.02] hover:bg-[hsl(237,35%,26%)]/[0.04]"
+                  className="inline-flex items-center gap-2 px-8 py-3 rounded-lg font-semibold text-base border-2 transition-all duration-300 hover:scale-[1.03] hover:bg-[hsl(237,35%,26%)]/[0.06]"
                   style={{
                     borderColor: 'hsl(237,35%,26%)',
                     color: 'hsl(237,35%,26%)',
@@ -167,21 +167,21 @@ export default function Home() {
             {pillars.map(({ icon: Icon, title, description }, i) => (
               <div
                 key={title}
-                className="rounded-2xl p-6 border transition-all duration-300 hover:shadow-[0_8px_20px_-4px_hsl(237_35%_26%/0.10)] hover:-translate-y-0.5 animate-fade-up"
+                className="rounded-2xl p-4 border transition-all duration-300 shadow-[0_2px_12px_0_hsl(237_35%_26%/0.08)] hover:scale-[1.03] hover:shadow-[0_14px_32px_-6px_hsl(237_35%_26%/0.18)] animate-fade-up"
                 style={{
                   animationDelay: `${i * 0.1}s`,
-                  background: 'hsl(230,33%,97%)',
+                  background: '#ffffff',
                   borderColor: 'hsl(228,14%,89%)',
                 }}
               >
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
-                  style={{ backgroundColor: 'hsl(237 35% 26% / 0.08)' }}
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-3"
+                  style={{ backgroundColor: 'hsl(237,35%,26%)' }}
                 >
-                  <Icon size={20} style={{ color: 'hsl(237,35%,26%)' }} />
+                  <Icon size={22} style={{ color: '#ffffff' }} />
                 </div>
                 <h3
-                  className="font-semibold text-lg mb-2 tracking-tight"
+                  className="font-semibold text-base mb-1.5 tracking-tight"
                   style={{ color: 'hsl(237,35%,26%)' }}
                 >
                   {title}
@@ -194,6 +194,13 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Divider */}
+      <div className="px-4" style={{ background: '#F0F2F8' }}>
+        <div className="container mx-auto">
+          <hr style={{ borderColor: 'hsl(228,14%,89%)', borderTopWidth: '1px' }} />
+        </div>
+      </div>
 
       {/* Services */}
       <section
@@ -219,17 +226,17 @@ export default function Home() {
             {services.map(({ icon: Icon, title, description, features }, i) => (
               <div
                 key={title}
-                className="rounded-2xl p-6 bg-white border transition-all duration-300 hover:shadow-[0_8px_20px_-4px_hsl(237_35%_26%/0.10)] hover:-translate-y-0.5"
+                className="rounded-2xl p-6 bg-white border transition-all duration-300 shadow-[0_2px_8px_0_hsl(237_35%_26%/0.06)] hover:scale-[1.03] hover:shadow-[0_14px_32px_-6px_hsl(237_35%_26%/0.18)]"
                 style={{
                   borderColor: 'hsl(228,14%,89%)',
                   animationDelay: `${i * 0.08}s`,
                 }}
               >
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
-                  style={{ backgroundColor: 'hsl(237 35% 26% / 0.08)' }}
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+                  style={{ backgroundColor: 'hsl(228,18%,93%)' }}
                 >
-                  <Icon size={20} style={{ color: 'hsl(237,35%,26%)' }} />
+                  <Icon size={22} style={{ color: 'hsl(237,35%,26%)' }} />
                 </div>
                 <h3
                   className="font-semibold text-base mb-2"
@@ -254,28 +261,17 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <div className="text-center mt-10">
-            <Link
-              to="/servicios"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg font-medium text-sm border-2 transition-all duration-200 hover:scale-[1.02]"
-              style={{
-                borderColor: 'hsl(237,35%,26%)',
-                color: 'hsl(237,35%,26%)',
-              }}
-            >
-              Ver todos los servicios
-              <ArrowRight size={16} />
-            </Link>
-          </div>
         </div>
       </section>
 
 
       {/* CTA */}
-      <CTASection
-        title="¿Listo para automatizar tu operación?"
-        description="Cuéntanos tu proceso y te proponemos un plan con impacto y tiempos."
-      />
+      <div id="contacto">
+        <CTASection
+          title="¿Listo para automatizar tu operación?"
+          description="Cuéntanos tu proceso y te proponemos un plan con impacto y tiempos."
+        />
+      </div>
     </>
   )
 }

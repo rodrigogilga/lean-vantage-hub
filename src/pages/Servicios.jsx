@@ -1,4 +1,4 @@
-import { Bot, Zap, Plug, LayoutDashboard } from 'lucide-react'
+import { Bot, Workflow, Plug, LayoutDashboard } from 'lucide-react'
 import CTASection from '../components/CTASection'
 
 const services = [
@@ -13,7 +13,7 @@ const services = [
     ],
   },
   {
-    icon: Zap,
+    icon: Workflow,
     title: 'Automatización de procesos',
     description: 'Reducimos tareas manuales en tu operación con flujos automáticos.',
     features: [
@@ -69,40 +69,53 @@ export default function Servicios() {
         </div>
       </div>
 
-      {/* Services grid */}
-      <section className="py-16 md:py-24 px-4 bg-white">
+      {/* Services section header + grid */}
+      <section className="py-16 md:py-20 px-4" style={{ background: '#F0F2F8' }}>
+        <div className="container mx-auto text-center mb-12">
+          <h2
+            className="text-2xl md:text-3xl font-bold mb-2 tracking-tight animate-fade-up"
+            style={{ color: 'hsl(237,35%,26%)' }}
+          >
+            Nuestros servicios
+          </h2>
+          <p
+            className="text-base max-w-xl mx-auto leading-relaxed animate-fade-up delay-100"
+            style={{ color: 'hsl(233,18%,42%)' }}
+          >
+            Soluciones completas para automatizar tu operación
+          </p>
+        </div>
         <div className="container mx-auto">
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map(({ icon: Icon, title, description, features }, i) => (
               <div
                 key={title}
-                className="rounded-2xl p-8 border transition-all duration-300 hover:shadow-[0_8px_20px_-4px_hsl(237_35%_26%/0.10)] hover:-translate-y-0.5 animate-fade-up"
+                className="group rounded-2xl p-6 border border-[hsl(228,14%,89%)] transition-all duration-300 shadow-[0_2px_8px_0_hsl(237_35%_26%/0.06)] hover:scale-[1.04] hover:border-[hsl(237,35%,26%)] hover:shadow-[0_16px_36px_-6px_hsl(237_35%_26%/0.20)] animate-fade-up"
                 style={{
-                  borderColor: 'hsl(228,14%,89%)',
                   animationDelay: `${i * 0.1}s`,
-                  background: 'hsl(230,33%,97%)',
+                  background: '#ffffff',
                 }}
               >
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                  style={{ backgroundColor: 'hsl(237 35% 26% / 0.08)' }}
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110"
+                  style={{ backgroundColor: 'hsl(228,18%,93%)' }}
                 >
                   <Icon size={22} style={{ color: 'hsl(237,35%,26%)' }} />
                 </div>
                 <h2
-                  className="font-bold text-xl mb-2 tracking-tight"
+                  className="font-bold text-base mb-2 tracking-tight"
                   style={{ color: 'hsl(237,35%,26%)' }}
                 >
                   {title}
                 </h2>
-                <p className="text-sm leading-relaxed mb-5" style={{ color: 'hsl(233,18%,42%)' }}>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: 'hsl(233,18%,42%)' }}>
                   {description}
                 </p>
-                <ul className="space-y-2">
+                <ul className="space-y-1.5">
                   {features.map((f) => (
-                    <li key={f} className="flex items-start gap-2.5 text-sm" style={{ color: 'hsl(233,18%,42%)' }}>
+                    <li key={f} className="flex items-start gap-2 text-xs" style={{ color: 'hsl(233,18%,42%)' }}>
                       <span
-                        className="mt-2 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
                         style={{ background: 'hsl(237,35%,26%)' }}
                       />
                       {f}

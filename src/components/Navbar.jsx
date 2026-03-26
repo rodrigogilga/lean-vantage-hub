@@ -57,10 +57,10 @@ export default function Navbar() {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
                   isActive(link.path)
                     ? 'text-[hsl(237,35%,26%)] bg-[hsl(237,35%,26%)]/[0.07]'
-                    : 'text-[hsl(233,18%,42%)] hover:text-[hsl(237,35%,26%)] hover:bg-[hsl(237,35%,26%)]/[0.04]'
+                    : 'text-[hsl(233,18%,42%)] hover:text-[hsl(237,35%,26%)] hover:bg-[hsl(237,35%,26%)]/[0.07]'
                 }`}
               >
                 {link.name}
@@ -76,7 +76,13 @@ export default function Navbar() {
             ))}
             <Link
               to="/contacto"
-              className="ml-4 px-5 py-2 text-sm font-semibold rounded-lg text-white transition-all duration-200 hover:scale-[1.02] hover:opacity-90"
+              className="relative px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 text-[hsl(233,18%,42%)] hover:text-[hsl(237,35%,26%)] hover:bg-[hsl(237,35%,26%)]/[0.07]"
+            >
+              Contacto
+            </Link>
+            <Link
+              to="/contacto"
+              className="ml-4 px-5 py-2 text-sm font-semibold rounded-lg text-white transition-all duration-300 hover:scale-[1.04] hover:shadow-[0_4px_14px_-2px_hsl(237_35%_26%/0.45)]"
               style={{ background: 'hsl(237,35%,26%)' }}
             >
               Contáctanos
@@ -115,6 +121,12 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
+            <Link
+              to="/contacto"
+              className="block px-4 py-2.5 rounded-lg text-sm font-medium transition-colors text-[hsl(233,18%,42%)] hover:bg-[hsl(228,18%,93%)]"
+            >
+              Contacto
+            </Link>
             <div className="pt-2">
               <Link
                 to="/contacto"
