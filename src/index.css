@@ -83,6 +83,14 @@ body::before {
 .delay-350 { animation-delay: 0.35s; }
 .delay-400 { animation-delay: 0.4s; }
 
+/* Hide Lovable badge */
+#lovable-badge,
+[data-lovable-badge],
+a[href*="lovable.app"],
+a[href*="lovable.dev"] {
+  display: none !important;
+}
+
 /* Scroll reveal */
 .reveal {
   opacity: 0;
