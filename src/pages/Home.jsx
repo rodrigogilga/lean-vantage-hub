@@ -146,11 +146,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section divider */}
-      <div className="h-px mx-auto max-w-5xl" style={{ background: 'hsl(228,14%,89%)' }} />
-
       {/* What we do — 3 pillars */}
-      <section className="py-24 px-4 bg-white relative">
+      <section className="py-24 px-4 relative" style={{ background: '#F0F2F8' }}>
         <div className="container mx-auto">
           <div className="text-center mb-16 space-y-4">
             <h2
