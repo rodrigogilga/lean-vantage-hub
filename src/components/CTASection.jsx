@@ -3,10 +3,7 @@ import { ArrowRight } from 'lucide-react'
 
 export default function CTASection({ title, description, buttonText = 'Contáctanos', buttonLink = '/contacto' }) {
   return (
-    <section
-      className="py-20 px-4 text-white"
-      style={{ background: 'var(--gradient-hero)' }}
-    >
+    <section className="py-20 px-4 text-white" style={{ background: '#1a2252' }}>
       <div className="container mx-auto text-center max-w-2xl">
         <h2
           className="text-2xl md:text-3xl font-bold mb-4 tracking-tight animate-fade-up"
@@ -19,7 +16,7 @@ export default function CTASection({ title, description, buttonText = 'Contácta
         </p>
         <Link
           to={buttonLink}
-          className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-white font-semibold transition-all duration-200 hover:scale-[1.03] hover:shadow-lg text-[hsl(237,35%,26%)] animate-fade-up delay-200"
+          className="inline-flex items-center gap-2 px-8 py-3 rounded-lg border-2 border-white text-white font-semibold transition-all duration-200 hover:bg-white hover:text-brand-navy hover:scale-[1.03] animate-fade-up delay-200"
         >
           {buttonText}
           <ArrowRight size={18} />
