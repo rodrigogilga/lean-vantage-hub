@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Bot, Zap, Plug, LayoutDashboard, Search, Pencil, Rocket } from 'lucide-react'
+import { ArrowRight, Bot, Zap, Plug, LayoutDashboard, Search } from 'lucide-react'
 import CTASection from '../components/CTASection'
 import heroImg from '@/assets/hero-illustration.jpg'
 
@@ -67,29 +67,6 @@ const services = [
   },
 ]
 
-const steps = [
-  {
-    icon: Search,
-    number: '01',
-    title: 'Diagnóstico',
-    description:
-      'Entendemos tu operación actual y el objetivo del proyecto. Detectamos tareas manuales, cuellos de botella y oportunidades de automatización con mayor impacto.',
-  },
-  {
-    icon: Pencil,
-    number: '02',
-    title: 'Diseño',
-    description:
-      'Diseñamos el flujo objetivo y construimos un primer prototipo funcional. Lo validamos contigo antes de implementar para reducir retrabajo.',
-  },
-  {
-    icon: Rocket,
-    number: '03',
-    title: 'Implementación y optimización',
-    description:
-      'Implementamos la solución, monitoreamos su funcionamiento y optimizamos según resultados reales para mejorar estabilidad, velocidad y control.',
-  },
-]
 
 export default function Home() {
   return (
@@ -296,67 +273,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Methodology preview */}
-      <section className="py-24 px-4 bg-white">
-        <div className="container mx-auto">
-          <div className="text-center mb-16 space-y-4">
-            <h2
-              className="text-3xl md:text-4xl font-bold tracking-tight"
-              style={{ color: 'hsl(237,35%,26%)' }}
-            >
-              Nuestra metodología
-            </h2>
-            <p
-              className="text-lg max-w-2xl mx-auto leading-relaxed"
-              style={{ color: 'hsl(233,18%,42%)' }}
-            >
-              Un proceso claro en 3 pasos para diseñar, validar e implementar
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {steps.map(({ icon: Icon, number, title, description }, i) => (
-              <div key={number} className="text-center space-y-4">
-                <div className="flex justify-center">
-                  <div
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-[0_4px_14px_-3px_hsl(237_35%_26%/0.18)]"
-                    style={{ background: 'var(--gradient-hero)' }}
-                  >
-                    <Icon size={24} className="text-white" />
-                  </div>
-                </div>
-                <div
-                  className="text-4xl font-bold opacity-15"
-                  style={{ color: 'hsl(237,35%,26%)' }}
-                >
-                  {number}
-                </div>
-                <h3
-                  className="font-semibold text-lg tracking-tight"
-                  style={{ color: 'hsl(237,35%,26%)' }}
-                >
-                  {title}
-                </h3>
-                <p className="text-sm leading-relaxed" style={{ color: 'hsl(233,18%,42%)' }}>
-                  {description}
-                </p>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link
-              to="/metodologia"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg font-medium text-sm border-2 transition-all duration-200 hover:scale-[1.02]"
-              style={{
-                borderColor: 'hsl(237,35%,26%)',
-                color: 'hsl(237,35%,26%)',
-              }}
-            >
-              Conoce nuestra metodología
-              <ArrowRight size={16} />
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* CTA */}
       <CTASection
