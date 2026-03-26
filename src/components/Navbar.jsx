@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
+import logoLV from '@/assets/logo-lv.png'
 
 const links = [
   { name: 'Inicio',        path: '/' },
   { name: 'Servicios',     path: '/servicios' },
   { name: 'Metodología',   path: '/metodologia' },
-  { name: 'Casos de uso',  path: '/casos' },
+  { name: 'Casos de uso',  path: '/casos-de-uso' },
   { name: 'FAQ',           path: '/faq' },
 ]
 
@@ -42,12 +43,11 @@ export default function Navbar() {
             to="/"
             className="flex items-center space-x-2 font-bold text-xl tracking-tight text-[hsl(237,35%,26%)] hover:opacity-80 transition-opacity"
           >
-            <span
-              className="inline-flex items-center justify-center w-8 h-8 rounded-lg text-white text-sm font-bold"
-              style={{ background: 'hsl(237,35%,26%)' }}
-            >
-              L
-            </span>
+            <img
+              src={logoLV}
+              alt="Leanvan logo"
+              className="h-9 w-9 object-contain mix-blend-multiply"
+            />
             <span>Leanvan</span>
           </Link>
 

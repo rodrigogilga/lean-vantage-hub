@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, Bot, Zap, Plug, LayoutDashboard, Search, Pencil, Rocket } from 'lucide-react'
 import CTASection from '../components/CTASection'
+import heroImg from '@/assets/hero-illustration.jpg'
 
 const pillars = [
   {
@@ -94,7 +95,7 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-28 pb-24 px-4 overflow-hidden">
+      <section className="relative pt-28 pb-24 px-4 overflow-hidden" style={{ background: '#F0F2F8' }}>
         {/* Ambient blobs */}
         <div
           className="absolute top-[-80px] left-[20%] w-[700px] h-[500px] rounded-full blur-[120px] pointer-events-none"
@@ -138,7 +139,7 @@ export default function Home() {
                   <ArrowRight size={18} />
                 </Link>
                 <Link
-                  to="/casos"
+                  to="/casos-de-uso"
                   className="inline-flex items-center gap-2 px-8 py-3 rounded-lg font-semibold text-base border-2 transition-all duration-250 hover:scale-[1.02] hover:bg-[hsl(237,35%,26%)]/[0.04]"
                   style={{
                     borderColor: 'hsl(237,35%,26%)',
@@ -150,51 +151,18 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Hero visual */}
+            {/* Hero visual — real image */}
             <div className="flex-1 w-full max-w-lg lg:max-w-none animate-fade-up delay-200">
               <div
                 className="rounded-2xl overflow-hidden shadow-[0_20px_40px_-8px_hsl(237_35%_26%/0.15)]"
-                style={{ background: 'var(--gradient-hero)', minHeight: '320px' }}
+                style={{ background: '#E8EBF2' }}
               >
-                <div className="p-8 space-y-4">
-                  {/* Mock dashboard UI */}
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-3 h-3 rounded-full bg-white/30" />
-                    <div className="w-3 h-3 rounded-full bg-white/30" />
-                    <div className="w-3 h-3 rounded-full bg-white/30" />
-                  </div>
-                  <div className="space-y-3">
-                    <div className="h-3 bg-white/20 rounded-full w-3/4" />
-                    <div className="h-3 bg-white/15 rounded-full w-1/2" />
-                  </div>
-                  <div className="grid grid-cols-2 gap-3 mt-4">
-                    {[
-                      { label: 'Agente IA', color: 'bg-white/15' },
-                      { label: 'Flujos', color: 'bg-white/10' },
-                      { label: 'Integraciones', color: 'bg-white/10' },
-                      { label: 'Reportes', color: 'bg-white/15' },
-                    ].map(({ label, color }) => (
-                      <div key={label} className={`${color} rounded-xl p-4`}>
-                        <p className="text-white/80 text-xs font-medium">{label}</p>
-                        <div className="mt-2 h-2 bg-white/20 rounded-full w-full" />
-                        <div className="mt-1.5 h-2 bg-white/15 rounded-full w-2/3" />
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-4 space-y-2">
-                    {[85, 62, 91].map((w, i) => (
-                      <div key={i} className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-white/50 flex-shrink-0" />
-                        <div className="flex-1 h-2 bg-white/10 rounded-full overflow-hidden">
-                          <div
-                            className="h-full bg-white/40 rounded-full"
-                            style={{ width: `${w}%` }}
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <img
+                  src={heroImg}
+                  alt="Plataforma de automatización con IA, dashboards y agentes de Leanvan"
+                  className="w-full h-auto object-cover"
+                  loading="eager"
+                />
               </div>
             </div>
           </div>
@@ -234,7 +202,7 @@ export default function Home() {
               >
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
-                  style={{ background: 'hsl(237,35%,26%)/0.08', backgroundColor: 'hsl(237 35% 26% / 0.08)' }}
+                  style={{ backgroundColor: 'hsl(237 35% 26% / 0.08)' }}
                 >
                   <Icon size={20} style={{ color: 'hsl(237,35%,26%)' }} />
                 </div>
@@ -256,7 +224,7 @@ export default function Home() {
       {/* Services */}
       <section
         className="py-24 px-4"
-        style={{ background: 'linear-gradient(180deg, hsl(230,33%,96%) 0%, hsl(230,33%,98%) 100%)' }}
+        style={{ background: '#F0F2F8' }}
       >
         <div className="container mx-auto">
           <div className="text-center mb-16 space-y-4">
@@ -264,8 +232,14 @@ export default function Home() {
               className="text-3xl md:text-4xl font-bold tracking-tight"
               style={{ color: 'hsl(237,35%,26%)' }}
             >
-              Soluciones completas para automatizar tu operación
+              Nuestros servicios
             </h2>
+            <p
+              className="text-lg max-w-2xl mx-auto leading-relaxed"
+              style={{ color: 'hsl(233,18%,42%)' }}
+            >
+              Soluciones completas para automatizar tu operación
+            </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map(({ icon: Icon, title, description, features }, i) => (
