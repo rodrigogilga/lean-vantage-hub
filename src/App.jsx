@@ -14,12 +14,12 @@ export default function App() {
       <Navbar />
       <main className="pt-16">
         <Routes>
-          <Route path="/"            element={<Home />} />
-          <Route path="/servicios"   element={<Servicios />} />
-          <Route path="/metodologia" element={<Metodologia />} />
-          <Route path="/casos"       element={<Casos />} />
-          <Route path="/faq"         element={<FAQ />} />
-          <Route path="/contacto"    element={<Contacto />} />
+          <Route path="/"             element={<Home />} />
+          <Route path="/servicios"    element={<Servicios />} />
+          <Route path="/metodologia"  element={<Metodologia />} />
+          <Route path="/casos-de-uso" element={<Casos />} />
+          <Route path="/faq"          element={<FAQ />} />
+          <Route path="/contacto"     element={<Contacto />} />
         </Routes>
       </main>
       <Footer />

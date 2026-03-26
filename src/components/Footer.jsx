@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom'
 import { Mail, Phone } from 'lucide-react'
+import logoLV from '@/assets/logo-lv.png'
 
 export default function Footer() {
-  const year = new Date().getFullYear()
-
   return (
     <footer
       className="text-white relative"
@@ -15,11 +14,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2.5">
-              <span
-                className="inline-flex items-center justify-center w-8 h-8 rounded-lg text-[hsl(237,35%,26%)] text-sm font-bold bg-white"
-              >
-                L
-              </span>
+              <img
+                src={logoLV}
+                alt="Leanvan logo"
+                className="h-8 w-8 object-contain brightness-0 invert"
+              />
               <span className="text-xl font-bold tracking-tight">Leanvan</span>
             </div>
             <p className="text-sm opacity-65 leading-relaxed">
@@ -34,9 +33,9 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2.5">
               {[
-                { to: '/servicios',   label: 'Servicios' },
-                { to: '/metodologia', label: 'Metodología' },
-                { to: '/casos',       label: 'Casos de uso' },
+                { to: '/servicios',    label: 'Servicios' },
+                { to: '/metodologia',  label: 'Metodología' },
+                { to: '/casos-de-uso', label: 'Casos de uso' },
               ].map(({ to, label }) => (
                 <li key={to}>
                   <Link
@@ -91,7 +90,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 mt-10 pt-8 flex flex-col items-center justify-center gap-1 text-sm opacity-45">
-          <p>© {year} Leanvan. Todos los derechos reservados.</p>
+          <p>© 2025 Leanvan. Todos los derechos reservados.</p>
           <p>Saltillo, Coahuila, México</p>
         </div>
       </div>
