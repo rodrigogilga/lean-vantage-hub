@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, Bot, Cpu, Zap, Plug, LayoutDashboard, Search } from 'lucide-react'
 import CTASection from '../components/CTASection'
+import Reveal from '../components/Reveal'
 import heroImg from '@/assets/hero-illustration.jpg'
 
 const pillars = [
@@ -149,27 +150,28 @@ export default function Home() {
       {/* What we do — 3 pillars */}
       <section className="py-24 px-4 relative" style={{ background: '#F0F2F8' }}>
         <div className="container mx-auto">
-          <div className="text-center mb-16 space-y-4">
-            <h2
-              className="text-3xl md:text-4xl font-bold tracking-tight animate-fade-up"
-              style={{ color: 'hsl(237,35%,26%)' }}
-            >
-              ¿Qué hacemos?
-            </h2>
-            <p
-              className="text-lg max-w-2xl mx-auto leading-relaxed animate-fade-up delay-100"
-              style={{ color: 'hsl(233,18%,42%)' }}
-            >
-              Tres pilares para transformar tu operación
-            </p>
-          </div>
+          <Reveal>
+            <div className="text-center mb-16 space-y-4">
+              <h2
+                className="text-3xl md:text-4xl font-bold tracking-tight"
+                style={{ color: 'hsl(237,35%,26%)' }}
+              >
+                ¿Qué hacemos?
+              </h2>
+              <p
+                className="text-lg max-w-2xl mx-auto leading-relaxed"
+                style={{ color: 'hsl(233,18%,42%)' }}
+              >
+                Tres pilares para transformar tu operación
+              </p>
+            </div>
+          </Reveal>
           <div className="grid md:grid-cols-3 gap-6">
             {pillars.map(({ icon: Icon, title, description }, i) => (
+              <Reveal key={title} delay={i * 0.1}>
               <div
-                key={title}
-                className="rounded-2xl p-4 border transition-all duration-300 shadow-[0_2px_12px_0_hsl(237_35%_26%/0.08)] hover:scale-[1.03] hover:shadow-[0_14px_32px_-6px_hsl(237_35%_26%/0.18)] animate-fade-up"
+                className="rounded-2xl p-4 border h-full transition-all duration-300 shadow-[0_2px_12px_0_hsl(237_35%_26%/0.08)] hover:scale-[1.03] hover:shadow-[0_14px_32px_-6px_hsl(237_35%_26%/0.18)]"
                 style={{
-                  animationDelay: `${i * 0.1}s`,
                   background: '#ffffff',
                   borderColor: 'hsl(228,14%,89%)',
                 }}
@@ -190,6 +192,7 @@ export default function Home() {
                   {description}
                 </p>
               </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -208,57 +211,57 @@ export default function Home() {
         style={{ background: '#F0F2F8' }}
       >
         <div className="container mx-auto">
-          <div className="text-center mb-16 space-y-4">
-            <h2
-              className="text-3xl md:text-4xl font-bold tracking-tight"
-              style={{ color: 'hsl(237,35%,26%)' }}
-            >
-              Nuestros servicios
-            </h2>
-            <p
-              className="text-lg max-w-2xl mx-auto leading-relaxed"
-              style={{ color: 'hsl(233,18%,42%)' }}
-            >
-              Soluciones completas para automatizar tu operación
-            </p>
-          </div>
+          <Reveal>
+            <div className="text-center mb-16 space-y-4">
+              <h2
+                className="text-3xl md:text-4xl font-bold tracking-tight"
+                style={{ color: 'hsl(237,35%,26%)' }}
+              >
+                Nuestros servicios
+              </h2>
+              <p
+                className="text-lg max-w-2xl mx-auto leading-relaxed"
+                style={{ color: 'hsl(233,18%,42%)' }}
+              >
+                Soluciones completas para automatizar tu operación
+              </p>
+            </div>
+          </Reveal>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map(({ icon: Icon, title, description, features }, i) => (
-              <div
-                key={title}
-                className="rounded-2xl p-6 bg-white border transition-all duration-300 shadow-[0_2px_8px_0_hsl(237_35%_26%/0.06)] hover:scale-[1.03] hover:shadow-[0_14px_32px_-6px_hsl(237_35%_26%/0.18)]"
-                style={{
-                  borderColor: 'hsl(228,14%,89%)',
-                  animationDelay: `${i * 0.08}s`,
-                }}
-              >
+              <Reveal key={title} delay={i * 0.08}>
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
-                  style={{ backgroundColor: 'hsl(228,18%,93%)' }}
+                  className="rounded-2xl p-6 bg-white border h-full transition-all duration-300 shadow-[0_2px_8px_0_hsl(237_35%_26%/0.06)] hover:scale-[1.03] hover:shadow-[0_14px_32px_-6px_hsl(237_35%_26%/0.18)]"
+                  style={{ borderColor: 'hsl(228,14%,89%)' }}
                 >
-                  <Icon size={22} style={{ color: 'hsl(237,35%,26%)' }} />
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+                    style={{ backgroundColor: 'hsl(228,18%,93%)' }}
+                  >
+                    <Icon size={22} style={{ color: 'hsl(237,35%,26%)' }} />
+                  </div>
+                  <h3
+                    className="font-semibold text-base mb-2"
+                    style={{ color: 'hsl(237,35%,26%)' }}
+                  >
+                    {title}
+                  </h3>
+                  <p className="text-sm leading-relaxed mb-4" style={{ color: 'hsl(233,18%,42%)' }}>
+                    {description}
+                  </p>
+                  <ul className="space-y-1.5">
+                    {features.map((f) => (
+                      <li key={f} className="flex items-start gap-2 text-xs" style={{ color: 'hsl(233,18%,42%)' }}>
+                        <span
+                          className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                          style={{ background: 'hsl(237,35%,26%)' }}
+                        />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h3
-                  className="font-semibold text-base mb-2"
-                  style={{ color: 'hsl(237,35%,26%)' }}
-                >
-                  {title}
-                </h3>
-                <p className="text-sm leading-relaxed mb-4" style={{ color: 'hsl(233,18%,42%)' }}>
-                  {description}
-                </p>
-                <ul className="space-y-1.5">
-                  {features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-xs" style={{ color: 'hsl(233,18%,42%)' }}>
-                      <span
-                        className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
-                        style={{ background: 'hsl(237,35%,26%)' }}
-                      />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

@@ -1,5 +1,6 @@
 import { Bot, Zap, Plug, BarChart3 } from 'lucide-react'
 import CTASection from '../components/CTASection'
+import Reveal from '../components/Reveal'
 
 const casos = [
   {
@@ -57,67 +58,61 @@ export default function Casos() {
         </div>
       </div>
 
-      {/* Cases */}
-      <section className="py-16 md:py-24 px-4 bg-white">
+      {/* Cases grid */}
+      <section className="py-16 md:py-24 px-4" style={{ background: '#F0F2F8' }}>
         <div className="container mx-auto max-w-5xl">
-          <div className="space-y-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {casos.map(({ icon: Icon, title, description, result }, i) => (
-              <div
-                key={title}
-                className={`flex flex-col md:flex-row gap-8 items-start animate-${i % 2 === 0 ? 'slide-left' : 'slide-right'}`}
-                style={{ animationDelay: `${i * 0.1}s` }}
-              >
-                {/* Visual card */}
+              <Reveal key={title} delay={i * 0.1}>
                 <div
-                  className="flex-shrink-0 w-full md:w-56 rounded-2xl overflow-hidden shadow-[0_4px_14px_-3px_hsl(237_35%_26%/0.12)]"
-                  style={{ background: 'var(--gradient-hero)', minHeight: '160px' }}
+                  className="rounded-2xl overflow-hidden border h-full flex flex-col transition-all duration-300 shadow-[0_2px_8px_0_hsl(237_35%_26%/0.06)] hover:scale-[1.03] hover:shadow-[0_14px_32px_-6px_hsl(237_35%_26%/0.18)]"
+                  style={{ background: '#ffffff', borderColor: 'hsl(228,14%,89%)' }}
                 >
-                  <div className="p-6 h-full flex flex-col justify-between">
-                    <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center bg-white/20"
-                    >
-                      <Icon size={20} className="text-white" />
-                    </div>
-                    <div className="space-y-2 mt-4">
-                      <div className="h-2 bg-white/20 rounded-full w-full" />
-                      <div className="h-2 bg-white/15 rounded-full w-3/4" />
-                      <div className="h-2 bg-white/10 rounded-full w-1/2" />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div
-                  className="flex-1 rounded-2xl p-6 border transition-all duration-300 shadow-[0_2px_8px_0_hsl(237_35%_26%/0.06)] hover:scale-[1.03] hover:shadow-[0_14px_32px_-6px_hsl(237_35%_26%/0.18)]"
-                  style={{
-                    background: '#ffffff',
-                    borderColor: 'hsl(228,14%,89%)',
-                  }}
-                >
-                  <h2
-                    className="font-bold text-xl mb-3 tracking-tight"
-                    style={{ color: 'hsl(237,35%,26%)' }}
-                  >
-                    {title}
-                  </h2>
-                  <p className="text-sm leading-relaxed mb-4" style={{ color: 'hsl(233,18%,42%)' }}>
-                    {description}
-                  </p>
+                  {/* Image placeholder */}
                   <div
-                    className="inline-flex items-center gap-2 text-sm font-medium px-3 py-1.5 rounded-lg"
-                    style={{
-                      background: 'hsl(237 35% 26% / 0.08)',
-                      color: 'hsl(237,35%,26%)',
-                    }}
+                    className="w-full flex items-center justify-center"
+                    style={{ background: '#E8EAF0', height: '180px' }}
                   >
-                    <span
-                      className="w-1.5 h-1.5 rounded-full"
-                      style={{ background: 'hsl(237,35%,26%)' }}
+                    <div
+                      className="w-16 h-16 rounded-2xl flex items-center justify-center"
+                      style={{ backgroundColor: 'hsl(237,35%,26%)', opacity: 0.15 }}
                     />
-                    {result}
+                    <Icon
+                      size={40}
+                      style={{ color: 'hsl(237,35%,26%)', position: 'absolute', opacity: 0.5 }}
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="flex items-center gap-2.5 mb-3">
+                      <div
+                        className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
+                        style={{ backgroundColor: 'hsl(228,18%,93%)' }}
+                      >
+                        <Icon size={15} style={{ color: 'hsl(237,35%,26%)' }} />
+                      </div>
+                      <h2
+                        className="font-bold text-base tracking-tight leading-snug"
+                        style={{ color: 'hsl(237,35%,26%)' }}
+                      >
+                        {title}
+                      </h2>
+                    </div>
+
+                    <p className="text-sm leading-relaxed flex-1" style={{ color: 'hsl(233,18%,42%)' }}>
+                      {description}
+                    </p>
+
+                    <p
+                      className="mt-4 text-sm italic"
+                      style={{ color: 'hsl(237,35%,36%)' }}
+                    >
+                      → {result}
+                    </p>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

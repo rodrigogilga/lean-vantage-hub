@@ -1,5 +1,6 @@
 import { Bot, Workflow, Plug, LayoutDashboard } from 'lucide-react'
 import CTASection from '../components/CTASection'
+import Reveal from '../components/Reveal'
 
 const services = [
   {
@@ -72,29 +73,28 @@ export default function Servicios() {
       {/* Services section header + grid */}
       <section className="py-16 md:py-20 px-4" style={{ background: '#F0F2F8' }}>
         <div className="container mx-auto text-center mb-12">
-          <h2
-            className="text-2xl md:text-3xl font-bold mb-2 tracking-tight animate-fade-up"
-            style={{ color: 'hsl(237,35%,26%)' }}
-          >
-            Nuestros servicios
-          </h2>
-          <p
-            className="text-base max-w-xl mx-auto leading-relaxed animate-fade-up delay-100"
-            style={{ color: 'hsl(233,18%,42%)' }}
-          >
-            Soluciones completas para automatizar tu operación
-          </p>
+          <Reveal>
+            <h2
+              className="text-2xl md:text-3xl font-bold mb-2 tracking-tight"
+              style={{ color: 'hsl(237,35%,26%)' }}
+            >
+              Nuestros servicios
+            </h2>
+            <p
+              className="text-base max-w-xl mx-auto leading-relaxed"
+              style={{ color: 'hsl(233,18%,42%)' }}
+            >
+              Soluciones completas para automatizar tu operación
+            </p>
+          </Reveal>
         </div>
         <div className="container mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map(({ icon: Icon, title, description, features }, i) => (
+              <Reveal key={title} delay={i * 0.1}>
               <div
-                key={title}
-                className="group rounded-2xl p-6 border border-[hsl(228,14%,89%)] transition-all duration-300 shadow-[0_2px_8px_0_hsl(237_35%_26%/0.06)] hover:scale-[1.04] hover:border-[hsl(237,35%,26%)] hover:shadow-[0_16px_36px_-6px_hsl(237_35%_26%/0.20)] animate-fade-up"
-                style={{
-                  animationDelay: `${i * 0.1}s`,
-                  background: '#ffffff',
-                }}
+                className="group rounded-2xl p-6 border border-[hsl(228,14%,89%)] h-full transition-all duration-300 shadow-[0_2px_8px_0_hsl(237_35%_26%/0.06)] hover:scale-[1.04] hover:border-[hsl(237,35%,26%)] hover:shadow-[0_16px_36px_-6px_hsl(237_35%_26%/0.20)]"
+                style={{ background: '#ffffff' }}
               >
                 <div
                   className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110"
@@ -123,6 +123,7 @@ export default function Servicios() {
                   ))}
                 </ul>
               </div>
+              </Reveal>
             ))}
           </div>
         </div>

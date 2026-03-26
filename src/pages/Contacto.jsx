@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Mail, Phone, CheckCircle, AlertCircle, ChevronDown } from 'lucide-react'
+import Reveal from '../components/Reveal'
 
 const WEBHOOK_URL = 'https://test-n8n.9fkt0y.easypanel.host/webhook/lovable-lead'
 
@@ -70,7 +71,8 @@ export default function Contacto() {
           <div className="grid md:grid-cols-5 gap-10 md:gap-14">
 
             {/* Form - left */}
-            <form onSubmit={handleSubmit} className="md:col-span-3 space-y-5">
+            <Reveal className="md:col-span-3">
+            <form onSubmit={handleSubmit} className="space-y-5">
               {[
                 { id: 'nombre', label: 'Nombre *', required: true },
                 { id: 'empresa', label: 'Empresa', required: false },
@@ -149,9 +151,11 @@ export default function Contacto() {
                 {loading ? 'Enviando...' : 'Contáctanos'}
               </button>
             </form>
+            </Reveal>
 
             {/* Info - right */}
-            <div className="md:col-span-2 space-y-6">
+            <Reveal delay={0.15} className="md:col-span-2">
+            <div className="space-y-6">
               <h2 className="text-xl md:text-2xl font-bold tracking-tight" style={{ color: '#1a2252' }}>
                 Información de contacto
               </h2>
@@ -174,7 +178,10 @@ export default function Contacto() {
                 </div>
               ))}
 
-              <div className="rounded-xl p-5 border" style={{ background: '#e8ebf2', borderColor: '#d1d5e0' }}>
+              <div
+                className="rounded-xl p-5 border transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_8px_20px_-4px_hsl(237_35%_26%/0.14)]"
+                style={{ background: '#e8ebf2', borderColor: '#d1d5e0' }}
+              >
                 <p className="text-sm font-semibold mb-1" style={{ color: '#1a2252' }}>
                   Tiempo de respuesta
                 </p>
@@ -183,6 +190,7 @@ export default function Contacto() {
                 </p>
               </div>
             </div>
+            </Reveal>
           </div>
         </div>
       </section>

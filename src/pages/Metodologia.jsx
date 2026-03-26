@@ -1,5 +1,6 @@
 import { Search, Pencil, Rocket } from 'lucide-react'
 import CTASection from '../components/CTASection'
+import Reveal from '../components/Reveal'
 
 const steps = [
   {
@@ -55,13 +56,10 @@ export default function Metodologia() {
         <div className="container mx-auto max-w-4xl">
           <div className="space-y-6">
             {steps.map(({ icon: Icon, number, title, description }, i) => (
+              <Reveal key={number} delay={i * 0.15}>
               <div
-                key={number}
-                className="rounded-2xl p-6 border border-[hsl(228,14%,89%)] flex items-start gap-5 transition-all duration-300 shadow-[0_2px_8px_0_hsl(237_35%_26%/0.06)] hover:scale-[1.02] hover:border-[hsl(237,35%,26%)] hover:shadow-[0_14px_32px_-6px_hsl(237_35%_26%/0.18)] animate-fade-up"
-                style={{
-                  background: '#ffffff',
-                  animationDelay: `${i * 0.15}s`,
-                }}
+                className="rounded-2xl p-6 border border-[hsl(228,14%,89%)] flex items-start gap-5 transition-all duration-300 shadow-[0_2px_8px_0_hsl(237_35%_26%/0.06)] hover:scale-[1.02] hover:border-[hsl(237,35%,26%)] hover:shadow-[0_14px_32px_-6px_hsl(237_35%_26%/0.18)]"
+                style={{ background: '#ffffff' }}
               >
                 {/* Icon */}
                 <div
@@ -90,6 +88,7 @@ export default function Metodologia() {
                   </p>
                 </div>
               </div>
+              </Reveal>
             ))}
           </div>
         </div>

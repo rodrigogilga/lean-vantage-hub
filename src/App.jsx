@@ -1,5 +1,12 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import Navbar from './components/Navbar'
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  return null
+}
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import Servicios from './pages/Servicios'
@@ -11,6 +18,7 @@ import Contacto from './pages/Contacto'
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Navbar />
       <main className="pt-16">
         <Routes>

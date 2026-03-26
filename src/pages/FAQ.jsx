@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import CTASection from '../components/CTASection'
+import Reveal from '../components/Reveal'
 
 const faqs = [
   {
@@ -128,13 +129,9 @@ export default function FAQ() {
         <div className="container mx-auto max-w-3xl">
           <div className="space-y-3">
             {faqs.map((item, i) => (
-              <div
-                key={item.question}
-                className="animate-fade-up"
-                style={{ animationDelay: `${i * 0.05}s` }}
-              >
+              <Reveal key={item.question} delay={i * 0.05}>
                 <FAQItem {...item} />
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
