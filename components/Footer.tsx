@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
+import Image from 'next/image'
 import { Mail, Phone } from 'lucide-react'
-import logoLV from '/images/logo.PNG'
 
 export default function Footer() {
   return (
@@ -14,9 +14,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2.5">
-              <img
-                src={logoLV}
+              <Image
+                src="/images/logo.PNG"
                 alt="Leanvan logo"
+                width={36}
+                height={36}
                 className="h-9 w-auto object-contain"
               />
               <span className="text-xl font-bold tracking-tight">Leanvan</span>
@@ -39,7 +41,7 @@ export default function Footer() {
               ].map(({ to, label }) => (
                 <li key={to}>
                   <Link
-                    to={to}
+                    href={to}
                     className="text-sm opacity-60 hover:opacity-100 transition-opacity duration-200"
                   >
                     {label}
@@ -61,7 +63,7 @@ export default function Footer() {
               ].map(({ to, label }) => (
                 <li key={to}>
                   <Link
-                    to={to}
+                    href={to}
                     className="text-sm opacity-60 hover:opacity-100 transition-opacity duration-200"
                   >
                     {label}

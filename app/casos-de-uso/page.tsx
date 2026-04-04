@@ -1,15 +1,25 @@
+import type { Metadata } from 'next'
+import Image from 'next/image'
 import { Bot, Zap, Plug, BarChart3 } from 'lucide-react'
-import CTASection from '../components/CTASection'
-import Reveal from '../components/Reveal'
-import imgWhatsapp from '/images/whatsapp-agent.jp.jpg'
-import imgOnboarding from '/images/onboarding-clientes.jpg'
-import imgSincronizacion from '/images/sincronizacion-ventas.jpg'
-import imgReportes from '/images/reportes-operacion.jpg'
+import CTASection from '@/components/CTASection'
+import Reveal from '@/components/Reveal'
+
+export const metadata: Metadata = {
+  title: 'Casos de Uso – Leanvan | Ejemplos de Automatización con IA en Saltillo',
+  description:
+    'Ejemplos reales de automatización en Saltillo: agentes de WhatsApp, onboarding automatizado, sincronización CRM/ERP y reportes operativos con IA.',
+  alternates: { canonical: 'https://www.leanvan.cloud/casos-de-uso' },
+  openGraph: {
+    title: 'Casos de Uso – Leanvan | Ejemplos de Automatización con IA',
+    description: 'Casos reales de automatización e IA aplicados a atención, operación y control en empresas de Saltillo.',
+    url: 'https://www.leanvan.cloud/casos-de-uso',
+  },
+}
 
 const casos = [
   {
     icon: Bot,
-    img: imgWhatsapp,
+    img: '/images/whatsapp-agent.jp.jpg',
     title: 'Agente de atención en WhatsApp',
     description:
       'Agente de IA que responde consultas, califica prospectos y agenda citas por WhatsApp con reglas personalizadas y escalamiento a una persona cuando se requiere.',
@@ -17,7 +27,7 @@ const casos = [
   },
   {
     icon: Zap,
-    img: imgOnboarding,
+    img: '/images/onboarding-clientes.jpg',
     title: 'Onboarding de clientes',
     description:
       'Flujo automatizado que envía documentos, solicita información, crea registros y activa notificaciones al equipo para iniciar el servicio más rápido y con menos seguimiento manual.',
@@ -25,7 +35,7 @@ const casos = [
   },
   {
     icon: Plug,
-    img: imgSincronizacion,
+    img: '/images/sincronizacion-ventas.jpg',
     title: 'Sincronización de ventas y operación',
     description:
       'Integración entre CRM, hojas de cálculo y otros sistemas para mantener datos de clientes, pedidos y seguimiento actualizados sin recaptura manual.',
@@ -33,7 +43,7 @@ const casos = [
   },
   {
     icon: BarChart3,
-    img: imgReportes,
+    img: '/images/reportes-operacion.jpg',
     title: 'Reportes automáticos de operación',
     description:
       'Generación y envío automático de reportes diarios o semanales con métricas clave de operación para seguimiento interno y toma de decisiones más rápida.',
@@ -44,18 +54,8 @@ const casos = [
 export default function Casos() {
   return (
     <>
-      <title>Casos de Uso – Leanvan | Ejemplos de Automatización con IA</title>
-      <meta
-        name="description"
-        content="Ejemplos reales de automatización: agentes de WhatsApp, onboarding automatizado, sincronización CRM/ERP y reportes operativos."
-      />
-      <link rel="canonical" href="https://www.leanvan.cloud/casos" />
-
       {/* Page header */}
-      <div
-        className="text-white py-12 md:py-16 px-4"
-        style={{ background: 'var(--gradient-hero)' }}
-      >
+      <div className="text-white py-12 md:py-16 px-4" style={{ background: 'var(--gradient-hero)' }}>
         <div className="container mx-auto text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-3 tracking-tight animate-fade-up">
             Casos de uso
@@ -78,10 +78,13 @@ export default function Casos() {
                 >
                   {/* Image */}
                   <div className="w-full overflow-hidden" style={{ height: '240px', background: '#EEF0F8' }}>
-                    <img
+                    <Image
                       src={img}
                       alt={title}
+                      width={600}
+                      height={240}
                       className="w-full h-full object-contain"
+                      loading="lazy"
                     />
                   </div>
 
@@ -106,10 +109,7 @@ export default function Casos() {
                       {description}
                     </p>
 
-                    <p
-                      className="mt-4 text-sm italic"
-                      style={{ color: 'hsl(237,35%,36%)' }}
-                    >
+                    <p className="mt-4 text-sm italic" style={{ color: 'hsl(237,35%,36%)' }}>
                       → {result}
                     </p>
                   </div>

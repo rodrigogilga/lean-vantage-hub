@@ -1,20 +1,23 @@
+'use client'
+
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import Link from 'next/link'
+import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
-import logoLV from '@/assets/logo-lv.png'
 
 const links = [
-  { name: 'Inicio',        path: '/' },
-  { name: 'Servicios',     path: '/servicios' },
-  { name: 'Metodología',   path: '/metodologia' },
-  { name: 'Casos de uso',  path: '/casos-de-uso' },
-  { name: 'FAQ',           path: '/faq' },
+  { name: 'Inicio',       path: '/' },
+  { name: 'Servicios',    path: '/servicios' },
+  { name: 'Metodología',  path: '/metodologia' },
+  { name: 'Casos de uso', path: '/casos-de-uso' },
+  { name: 'FAQ',          path: '/faq' },
 ]
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const location = useLocation()
+  const pathname = usePathname()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -22,10 +25,10 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => setOpen(false), [location])
+  useEffect(() => setOpen(false), [pathname])
 
-  const isActive = (path) =>
-    path === '/' ? location.pathname === '/' : location.pathname.startsWith(path)
+  const isActive = (path: string) =>
+    path === '/' ? pathname === '/' : pathname.startsWith(path)
 
   return (
     <nav
@@ -40,12 +43,14 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link
-            to="/"
+            href="/"
             className="flex items-center space-x-2 font-bold text-xl tracking-tight text-[hsl(237,35%,26%)] hover:opacity-80 transition-opacity"
           >
-            <img
-              src={logoLV}
+            <Image
+              src="/logo-lv.png"
               alt="Leanvan logo"
+              width={36}
+              height={36}
               className="h-9 w-9 object-contain mix-blend-multiply"
             />
             <span>Leanvan</span>
@@ -56,7 +61,7 @@ export default function Navbar() {
             {links.map((link) => (
               <Link
                 key={link.path}
-                to={link.path}
+                href={link.path}
                 className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
                   isActive(link.path)
                     ? 'text-[hsl(237,35%,26%)] bg-[hsl(237,35%,26%)]/[0.07]'
@@ -68,20 +73,21 @@ export default function Navbar() {
                   <span
                     className="absolute bottom-0 left-3 right-3 h-[2px] rounded-full"
                     style={{
-                      background: 'linear-gradient(90deg, hsl(237 35% 26% / 0.6), hsl(237 35% 26% / 1), hsl(237 35% 26% / 0.6))',
+                      background:
+                        'linear-gradient(90deg, hsl(237 35% 26% / 0.6), hsl(237 35% 26% / 1), hsl(237 35% 26% / 0.6))',
                     }}
                   />
                 )}
               </Link>
             ))}
             <Link
-              to="/contacto"
+              href="/contacto"
               className="relative px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 text-[hsl(233,18%,42%)] hover:text-[hsl(237,35%,26%)] hover:bg-[hsl(237,35%,26%)]/[0.07]"
             >
               Contacto
             </Link>
             <Link
-              to="/contacto"
+              href="/contacto"
               className="ml-4 px-5 py-2 text-sm font-semibold rounded-lg text-white transition-all duration-300 hover:scale-[1.04] hover:shadow-[0_4px_14px_-2px_hsl(237_35%_26%/0.45)]"
               style={{ background: 'hsl(237,35%,26%)' }}
             >
@@ -111,7 +117,7 @@ export default function Navbar() {
             {links.map((link) => (
               <Link
                 key={link.path}
-                to={link.path}
+                href={link.path}
                 className={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                   isActive(link.path)
                     ? 'bg-[hsl(237,35%,26%)]/[0.08] text-[hsl(237,35%,26%)]'
@@ -122,14 +128,14 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
-              to="/contacto"
+              href="/contacto"
               className="block px-4 py-2.5 rounded-lg text-sm font-medium transition-colors text-[hsl(233,18%,42%)] hover:bg-[hsl(228,18%,93%)]"
             >
               Contacto
             </Link>
             <div className="pt-2">
               <Link
-                to="/contacto"
+                href="/contacto"
                 className="block w-full text-center px-4 py-2.5 rounded-lg text-sm font-semibold text-white transition-all"
                 style={{ background: 'hsl(237,35%,26%)' }}
               >

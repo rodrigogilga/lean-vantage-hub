@@ -1,7 +1,19 @@
-import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
-import CTASection from '../components/CTASection'
-import Reveal from '../components/Reveal'
+import type { Metadata } from 'next'
+import CTASection from '@/components/CTASection'
+import Reveal from '@/components/Reveal'
+import FAQList from '@/components/FAQList'
+
+export const metadata: Metadata = {
+  title: 'FAQ – Leanvan | Preguntas Frecuentes sobre Automatización e IA en Saltillo',
+  description:
+    'Respuestas a las preguntas más frecuentes sobre automatización, agentes de IA, integraciones, cotización y soporte de Leanvan en Saltillo, Coahuila.',
+  alternates: { canonical: 'https://www.leanvan.cloud/faq' },
+  openGraph: {
+    title: 'FAQ – Leanvan | Preguntas Frecuentes sobre Automatización e IA',
+    description: 'Resolvemos tus dudas sobre automatización con IA, cotización, integraciones y soporte.',
+    url: 'https://www.leanvan.cloud/faq',
+  },
+}
 
 const faqs = [
   {
@@ -46,74 +58,26 @@ const faqs = [
   },
 ]
 
-function FAQItem({ question, answer }) {
-  const [open, setOpen] = useState(false)
-
-  return (
-    <div
-      className="border rounded-xl overflow-hidden transition-all duration-300 shadow-[0_1px_6px_0_hsl(237_35%_26%/0.05)] hover:scale-[1.02] hover:shadow-[0_8px_20px_-4px_hsl(237_35%_26%/0.14)]"
-      style={{ borderColor: 'hsl(228,14%,89%)' }}
-    >
-      <button
-        className="w-full flex items-center justify-between gap-4 p-5 text-left transition-colors duration-150 hover:bg-[hsl(230,33%,97%)]"
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-      >
-        <span
-          className="font-semibold text-sm md:text-base"
-          style={{ color: 'hsl(237,35%,26%)' }}
-        >
-          {question}
-        </span>
-        <ChevronDown
-          size={18}
-          className="flex-shrink-0 transition-transform duration-300"
-          style={{
-            color: 'hsl(233,18%,42%)',
-            transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
-          }}
-        />
-      </button>
-      {open && (
-        <div
-          className="px-5 pb-5 text-sm leading-relaxed"
-          style={{ color: 'hsl(233,18%,42%)' }}
-        >
-          {answer}
-        </div>
-      )}
-    </div>
-  )
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(({ question, answer }) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: { '@type': 'Answer', text: answer },
+  })),
 }
 
 export default function FAQ() {
   return (
     <>
-      <title>FAQ – Leanvan | Preguntas Frecuentes sobre Automatización e IA</title>
-      <meta
-        name="description"
-        content="Respuestas a las preguntas más frecuentes sobre automatización, agentes de IA, integraciones, cotización y soporte de Leanvan."
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <link rel="canonical" href="https://www.leanvan.cloud/faq" />
-
-      {/* JSON-LD FAQ */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'FAQPage',
-          mainEntity: faqs.map(({ question, answer }) => ({
-            '@type': 'Question',
-            name: question,
-            acceptedAnswer: { '@type': 'Answer', text: answer },
-          })),
-        })}
-      </script>
 
       {/* Page header */}
-      <div
-        className="text-white py-12 md:py-16 px-4"
-        style={{ background: 'var(--gradient-hero)' }}
-      >
+      <div className="text-white py-12 md:py-16 px-4" style={{ background: 'var(--gradient-hero)' }}>
         <div className="container mx-auto text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-3 tracking-tight animate-fade-up">
             Preguntas frecuentes
@@ -130,7 +94,7 @@ export default function FAQ() {
           <div className="space-y-3">
             {faqs.map((item, i) => (
               <Reveal key={item.question} delay={i * 0.05}>
-                <FAQItem {...item} />
+                <FAQList question={item.question} answer={item.answer} />
               </Reveal>
             ))}
           </div>
