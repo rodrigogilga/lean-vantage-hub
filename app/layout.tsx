@@ -43,6 +43,13 @@ export const metadata: Metadata = {
       'Consultoría de automatización con IA en Saltillo, Coahuila. Transformamos procesos en sistemas que trabajan por ti.',
     images: ['/hero-illustration.jpg'],
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/logo-lv.png',
+  },
   robots: {
     index: true,
     follow: true,
