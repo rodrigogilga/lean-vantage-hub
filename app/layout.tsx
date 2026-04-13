@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import ParticleBackground from '@/components/ParticleBackground'
+import StickyMobileCTA from '@/components/StickyMobileCTA'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
@@ -109,6 +110,7 @@ export default function RootLayout({
           <main className="pt-16">{children}</main>
           <Footer />
           <WhatsAppButton />
+          <StickyMobileCTA />
         </div>
       </body>
     </html>
