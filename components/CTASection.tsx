@@ -31,10 +31,17 @@ export default function CTASection({
           <p className="text-base md:text-lg opacity-80 mb-8 leading-relaxed">
             {description}
           </p>
-          <Link href={buttonLink} className="btn-primary">
-            {buttonText}
-            <ArrowRight size={18} />
-          </Link>
+          {buttonLink.startsWith('http') ? (
+            <a href={buttonLink} target="_blank" rel="noopener noreferrer" className="btn-primary">
+              {buttonText}
+              <ArrowRight size={18} />
+            </a>
+          ) : (
+            <Link href={buttonLink} className="btn-primary">
+              {buttonText}
+              <ArrowRight size={18} />
+            </Link>
+          )}
         </Reveal>
       </div>
     </section>

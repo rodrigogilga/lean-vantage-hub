@@ -131,7 +131,7 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center pt-1 animate-fade-up delay-300">
                 <Link href="/contacto" className="btn-primary">
-                  Contáctanos
+                  Solicita tu diagnóstico
                   <ArrowRight size={18} />
                 </Link>
                 <Link href="/casos-de-uso" className="btn-secondary">
@@ -273,6 +273,7 @@ export default function Home() {
         <CTASection
           title="¿Listo para automatizar tu operación?"
           description="Cuéntanos tu proceso y te proponemos un plan con impacto y tiempos."
+          buttonText="Cuéntanos tu proceso"
         />
       </div>
     </>

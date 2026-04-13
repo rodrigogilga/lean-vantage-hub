@@ -104,6 +104,8 @@ export default function FAQ() {
       <CTASection
         title="¿Tienes otra pregunta?"
         description="Escríbenos directamente y te respondemos en menos de 24 horas hábiles."
+        buttonText="¿Tienes otra pregunta? Escríbenos"
+        buttonLink="https://wa.me/528444615458"
       />
     </>
   )
