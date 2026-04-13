@@ -88,8 +88,8 @@ export default function Navbar() {
             </Link>
             <Link
               href="/contacto"
-              className="ml-4 px-5 py-2 text-sm font-semibold rounded-lg text-white transition-all duration-300 hover:scale-[1.04] hover:shadow-[0_4px_14px_-2px_hsl(237_35%_26%/0.45)]"
-              style={{ background: 'hsl(237,35%,26%)' }}
+              className="btn-primary ml-4"
+              style={{ padding: '8px 20px', fontSize: '0.875rem', borderRadius: '8px' }}
             >
               Contáctanos
             </Link>
@@ -136,8 +136,8 @@ export default function Navbar() {
             <div className="pt-2">
               <Link
                 href="/contacto"
-                className="block w-full text-center px-4 py-2.5 rounded-lg text-sm font-semibold text-white transition-all"
-                style={{ background: 'hsl(237,35%,26%)' }}
+                className="btn-primary w-full justify-center"
+                style={{ padding: '10px 20px', fontSize: '0.875rem', borderRadius: '8px' }}
               >
                 Contáctanos
               </Link>
