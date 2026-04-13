@@ -5,6 +5,7 @@ import { ArrowRight, Bot, Cpu, Zap, Plug, LayoutDashboard, Search } from 'lucide
 import CTASection from '@/components/CTASection'
 import Reveal from '@/components/Reveal'
 import AnimatedCounters from '@/components/AnimatedCounters'
+import AgentFlowDiagram from '@/components/AgentFlowDiagram'
 
 export const metadata: Metadata = {
   title: 'Leanvan - Automatización y Agentes de IA en Saltillo',
@@ -263,6 +264,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Agent flow diagram */}
+      <AgentFlowDiagram />
 
       {/* CTA */}
       <div id="contacto">
