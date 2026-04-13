@@ -128,19 +128,11 @@ export default function Home() {
                 mejorar tiempos, control y escalabilidad.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center pt-1 animate-fade-up delay-300">
-                <Link
-                  href="/contacto"
-                  className="inline-flex items-center gap-2 px-8 py-3 rounded-lg text-white font-semibold text-base transition-all duration-300 hover:scale-[1.04] hover:shadow-[0_8px_20px_-4px_hsl(237_35%_26%/0.4)]"
-                  style={{ background: 'hsl(237,35%,26%)' }}
-                >
+                <Link href="/contacto" className="btn-primary">
                   Contáctanos
                   <ArrowRight size={18} />
                 </Link>
-                <Link
-                  href="/casos-de-uso"
-                  className="inline-flex items-center gap-2 px-8 py-3 rounded-lg font-semibold text-base border-2 transition-all duration-300 hover:scale-[1.03] hover:bg-[hsl(237,35%,26%)]/[0.06]"
-                  style={{ borderColor: 'hsl(237,35%,26%)', color: 'hsl(237,35%,26%)' }}
-                >
+                <Link href="/casos-de-uso" className="btn-secondary">
                   Ver casos de uso
                 </Link>
               </div>
