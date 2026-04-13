@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { ArrowRight, Bot, Cpu, Zap, Plug, LayoutDashboard, Search } from 'lucide-react'
 import CTASection from '@/components/CTASection'
 import Reveal from '@/components/Reveal'
+import AnimatedCounters from '@/components/AnimatedCounters'
 
 export const metadata: Metadata = {
   title: 'Leanvan - Automatización y Agentes de IA en Saltillo',
@@ -157,6 +158,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Metrics counters */}
+      <AnimatedCounters />
 
       {/* What we do — 3 pillars */}
       <section className="py-24 px-4 relative" style={{ background: '#F0F2F8' }}>
