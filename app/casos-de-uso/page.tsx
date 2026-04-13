@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import { Bot, Zap, Plug, BarChart3 } from 'lucide-react'
 import CTASection from '@/components/CTASection'
 import Reveal from '@/components/Reveal'
@@ -19,35 +18,39 @@ export const metadata: Metadata = {
 const casos = [
   {
     icon: Bot,
-    img: '/images/whatsapp-agent.jp.jpg',
     title: 'Agente de atención en WhatsApp',
-    description:
-      'Agente de IA que responde consultas, califica prospectos y agenda citas por WhatsApp con reglas personalizadas y escalamiento a una persona cuando se requiere.',
-    result: 'Menor tiempo de respuesta y mejor seguimiento comercial.',
+    problema:
+      'Una empresa recibía +80 mensajes al día en WhatsApp. El equipo tardaba horas en responder, perdía prospectos y no había seguimiento sistemático.',
+    solucion:
+      'Se implementó un agente de IA que responde en segundos con el contexto del negocio, califica prospectos según reglas definidas, agenda citas automáticamente y escala a una persona solo cuando es necesario.',
+    resultado: 'Tiempo de primera respuesta de 4 horas a menos de 30 segundos. Aumento del 40% en citas agendadas.',
   },
   {
     icon: Zap,
-    img: '/images/onboarding-clientes.jpg',
-    title: 'Onboarding de clientes',
-    description:
-      'Flujo automatizado que envía documentos, solicita información, crea registros y activa notificaciones al equipo para iniciar el servicio más rápido y con menos seguimiento manual.',
-    result: 'Menos retrasos y mejor arranque de cada cliente.',
+    title: 'Onboarding de clientes automatizado',
+    problema:
+      'El alta de cada cliente nuevo requería 6-8 correos, recopilar documentos manualmente, crear registros en 3 sistemas distintos y asignar tareas al equipo. El proceso tardaba de 3 a 5 días.',
+    solucion:
+      'Se diseñó un flujo automático que envía la documentación requerida, recopila información del cliente, crea los registros necesarios y notifica al equipo cuando todo está listo para iniciar.',
+    resultado: 'El onboarding pasó de 5 días a 4 horas. Cero seguimientos manuales.',
   },
   {
     icon: Plug,
-    img: '/images/sincronizacion-ventas.jpg',
     title: 'Sincronización de ventas y operación',
-    description:
-      'Integración entre CRM, hojas de cálculo y otros sistemas para mantener datos de clientes, pedidos y seguimiento actualizados sin recaptura manual.',
-    result: 'Menos errores y datos consistentes entre áreas.',
+    problema:
+      'El equipo de ventas registraba pedidos en un sistema y operaciones usaba hojas de cálculo. Los datos no coincidían, había duplicados y errores de captura que generaban retrabajos semanales.',
+    solucion:
+      'Se conectaron los sistemas de ventas y operación para que los datos se sincronicen automáticamente. Cada venta registrada genera los registros operativos sin intervención manual.',
+    resultado: 'Eliminación del 95% de errores por recaptura. 6 horas semanales recuperadas del equipo.',
   },
   {
     icon: BarChart3,
-    img: '/images/reportes-operacion.jpg',
     title: 'Reportes automáticos de operación',
-    description:
-      'Generación y envío automático de reportes diarios o semanales con métricas clave de operación para seguimiento interno y toma de decisiones más rápida.',
-    result: 'Más visibilidad sin trabajo manual recurrente.',
+    problema:
+      'Cada lunes, un coordinador pasaba 2-3 horas recopilando datos de distintas fuentes para armar el reporte semanal. A veces llegaba tarde o con datos desactualizados.',
+    solucion:
+      'Se automatizó la recopilación de datos y la generación del reporte. Se envía automáticamente por correo y WhatsApp cada lunes a las 8am con las métricas clave actualizadas.',
+    resultado: 'De 3 horas de trabajo manual a 0. Reportes siempre puntuales y con datos en tiempo real.',
   },
 ]
 
@@ -61,57 +64,79 @@ export default function Casos() {
             Casos de uso
           </h1>
           <p className="text-lg opacity-85 max-w-2xl mx-auto leading-relaxed animate-fade-up delay-150">
-            Ejemplos de automatización e IA aplicados a atención, operación y control
+            Ejemplos reales de automatización e IA aplicados a operaciones de empresas
           </p>
         </div>
       </div>
 
-      {/* Cases grid */}
+      {/* Cases */}
       <section className="py-16 md:py-24 px-4" style={{ background: '#F0F2F8' }}>
         <div className="container mx-auto max-w-5xl">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {casos.map(({ icon: Icon, img, title, description, result }, i) => (
+            {casos.map(({ icon: Icon, title, problema, solucion, resultado }, i) => (
               <Reveal key={title} delay={i * 0.1}>
                 <div
-                  className="rounded-2xl overflow-hidden border h-full flex flex-col transition-all duration-300 shadow-[0_2px_8px_0_hsl(237_35%_26%/0.06)] hover:scale-[1.03] hover:shadow-[0_14px_32px_-6px_hsl(237_35%_26%/0.18)]"
+                  className="rounded-2xl overflow-hidden border h-full flex flex-col transition-all duration-300 shadow-[0_2px_8px_0_hsl(237_35%_26%/0.06)] hover:scale-[1.02] hover:shadow-[0_14px_32px_-6px_rgba(61,142,240,0.18)] hover:border-[rgba(61,142,240,0.3)]"
                   style={{ background: '#ffffff', borderColor: 'hsl(228,14%,89%)' }}
                 >
-                  {/* Image */}
-                  <div className="w-full overflow-hidden" style={{ height: '240px', background: '#EEF0F8' }}>
-                    <Image
-                      src={img}
-                      alt={title}
-                      width={600}
-                      height={240}
-                      className="w-full h-full object-contain"
-                      loading="lazy"
-                    />
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6 flex flex-col flex-1">
-                    <div className="flex items-center gap-2.5 mb-3">
+                  {/* Header */}
+                  <div className="p-6 pb-4">
+                    <div className="flex items-center gap-3 mb-4">
                       <div
-                        className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
+                        className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
                         style={{ backgroundColor: 'hsl(228,18%,93%)' }}
                       >
-                        <Icon size={15} style={{ color: 'hsl(237,35%,26%)' }} />
+                        <Icon size={18} style={{ color: '#1a2356' }} />
                       </div>
                       <h2
                         className="font-bold text-base tracking-tight leading-snug"
-                        style={{ color: 'hsl(237,35%,26%)' }}
+                        style={{ color: '#1a2356' }}
                       >
                         {title}
                       </h2>
                     </div>
 
-                    <p className="text-sm leading-relaxed flex-1" style={{ color: 'hsl(233,18%,42%)' }}>
-                      {description}
-                    </p>
+                    {/* Problema */}
+                    <div className="mb-4">
+                      <p
+                        className="text-xs font-semibold uppercase tracking-widest mb-1.5"
+                        style={{ color: '#ef4444' }}
+                      >
+                        El problema
+                      </p>
+                      <p className="text-sm leading-relaxed" style={{ color: 'hsl(233,18%,42%)' }}>
+                        {problema}
+                      </p>
+                    </div>
 
-                    <p className="mt-4 text-sm italic" style={{ color: 'hsl(237,35%,36%)' }}>
-                      → {result}
-                    </p>
+                    {/* Solución */}
+                    <div className="mb-4">
+                      <p
+                        className="text-xs font-semibold uppercase tracking-widest mb-1.5"
+                        style={{ color: '#3d8ef0' }}
+                      >
+                        La solución
+                      </p>
+                      <p className="text-sm leading-relaxed" style={{ color: 'hsl(233,18%,42%)' }}>
+                        {solucion}
+                      </p>
+                    </div>
+
+                    {/* Resultado */}
+                    <div
+                      className="rounded-lg p-3"
+                      style={{ background: '#f0fdf4', borderLeft: '3px solid #22c55e' }}
+                    >
+                      <p
+                        className="text-xs font-semibold uppercase tracking-widest mb-1"
+                        style={{ color: '#16a34a' }}
+                      >
+                        El resultado
+                      </p>
+                      <p className="text-sm font-medium leading-relaxed" style={{ color: '#15803d' }}>
+                        {resultado}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </Reveal>
@@ -122,7 +147,8 @@ export default function Casos() {
 
       <CTASection
         title="¿Quieres algo similar para tu operación?"
-        description="Cuéntanos tu proceso y te ayudamos a identificar una automatización o solución de IA con mayor impacto."
+        description="Cuéntanos tu proceso y te ayudamos a identificar una automatización con mayor impacto."
+        buttonText="¿Quieres algo similar? Platiquemos"
       />
     </>
   )
