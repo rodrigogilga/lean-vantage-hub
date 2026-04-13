@@ -11,6 +11,7 @@ const links = [
   { name: 'Servicios',    path: '/servicios' },
   { name: 'Metodología',  path: '/metodologia' },
   { name: 'Casos de uso', path: '/casos-de-uso' },
+  { name: 'Nosotros',     path: '/nosotros' },
   { name: 'FAQ',          path: '/faq' },
 ]
 
