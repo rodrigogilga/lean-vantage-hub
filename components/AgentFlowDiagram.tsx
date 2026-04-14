@@ -13,6 +13,7 @@ const steps = [
 
 const STEP_INTERVAL = 800;   // ms between each step lighting up
 const PAUSE_AFTER   = 2000;  // ms pause after last step before restarting
+const FADE_OUT      = 600;   // ms for all nodes to fade dark before next cycle
 
 export default function AgentFlowDiagram() {
   const ref      = useRef<HTMLDivElement>(null);
@@ -26,16 +27,17 @@ export default function AgentFlowDiagram() {
     timerRef.current.forEach(clearTimeout);
     timerRef.current = [];
 
+    // Reset all nodes to dark; CSS transition-duration-500 will animate the fade-out
     setActiveIndex(-1);
 
-    // Light up each step
+    // After the fade-out completes, light up each step in sequence
     steps.forEach((_, i) => {
-      const t = setTimeout(() => setActiveIndex(i), i * STEP_INTERVAL);
+      const t = setTimeout(() => setActiveIndex(i), FADE_OUT + i * STEP_INTERVAL);
       timerRef.current.push(t);
     });
 
     // After the last step + pause, restart
-    const restartAt = steps.length * STEP_INTERVAL + PAUSE_AFTER;
+    const restartAt = FADE_OUT + steps.length * STEP_INTERVAL + PAUSE_AFTER;
     const restart = setTimeout(() => scheduleLoop(), restartAt);
     timerRef.current.push(restart);
   };
