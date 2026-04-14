@@ -11,17 +11,33 @@ const steps = [
   { icon: Bell,          label: 'Envía alerta a tu equipo',    color: '#3d8ef0' },
 ];
 
-export default function AgentFlowDiagram() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(-1);
-  const [started, setStarted] = useState(false);
+const STEP_INTERVAL = 800;   // ms between each step lighting up
+const PAUSE_AFTER   = 2000;  // ms pause after last step before restarting
 
-  const runAnimation = () => {
+export default function AgentFlowDiagram() {
+  const ref      = useRef<HTMLDivElement>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const [visible, setVisible] = useState(false);
+
+  // Schedule one full cycle of the animation and queue the next
+  const scheduleLoop = () => {
+    // Clear any lingering timers
+    timerRef.current.forEach(clearTimeout);
+    timerRef.current = [];
+
     setActiveIndex(-1);
-    setStarted(true);
+
+    // Light up each step
     steps.forEach((_, i) => {
-      setTimeout(() => setActiveIndex(i), i * 800);
+      const t = setTimeout(() => setActiveIndex(i), i * STEP_INTERVAL);
+      timerRef.current.push(t);
     });
+
+    // After the last step + pause, restart
+    const restartAt = steps.length * STEP_INTERVAL + PAUSE_AFTER;
+    const restart = setTimeout(() => scheduleLoop(), restartAt);
+    timerRef.current.push(restart);
   };
 
   useEffect(() => {
@@ -29,14 +45,21 @@ export default function AgentFlowDiagram() {
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !started) runAnimation();
+        if (entry.isIntersecting && !visible) {
+          setVisible(true);
+          scheduleLoop();
+          observer.unobserve(el);
+        }
       },
       { threshold: 0.3 }
     );
     observer.observe(el);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      timerRef.current.forEach(clearTimeout);
+    };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [started]);
+  }, []);
 
   return (
     <div ref={ref} className="py-14 px-4" style={{ background: 'rgba(255,255,255,0.75)' }}>
@@ -57,8 +80,8 @@ export default function AgentFlowDiagram() {
         {/* Steps */}
         <div className="flex flex-col md:flex-row items-center gap-0 md:gap-0 justify-between">
           {steps.map(({ icon: Icon, label, color }, i) => {
-            const isActive = activeIndex >= i;
-            const isSpecial = color === '#8b5cf6'; // diferenciador Leanvan
+            const isActive  = activeIndex >= i;
+            const isSpecial = color === '#8b5cf6';
             return (
               <div key={label} className="flex flex-col md:flex-row items-center flex-1">
                 {/* Node */}
@@ -112,17 +135,6 @@ export default function AgentFlowDiagram() {
               </div>
             );
           })}
-        </div>
-
-        {/* Repeat button */}
-        <div className="text-center mt-8">
-          <button
-            onClick={runAnimation}
-            className="text-sm font-medium px-4 py-2 rounded-lg border transition-all duration-200 hover:bg-[rgba(61,142,240,0.06)]"
-            style={{ borderColor: '#3d8ef0', color: '#3d8ef0' }}
-          >
-            ↺ Repetir animación
-          </button>
         </div>
       </div>
     </div>
