@@ -11,10 +11,10 @@ const steps = [
   { icon: Bell,          label: 'Envía alerta a tu equipo',    color: '#3d8ef0', special: false },
 ];
 
-const STEP_INTERVAL = 800;   // ms between each node lighting up
-const PAUSE_AFTER   = 2000;  // ms all nodes stay lit before fade-out
-const FADE_OUT_MS   = 900;   // ms for the fade-out CSS transition
-const PAUSE_BETWEEN = 800;   // ms pause after fade completes before restart
+const STEP_INTERVAL = 550;   // ms between each node lighting up
+const PAUSE_AFTER   = 1400;  // ms all nodes stay lit before fade-out
+const FADE_OUT_MS   = 700;   // ms for the fade-out CSS transition
+const PAUSE_BETWEEN = 500;   // ms pause after fade completes before restart
 
 export default function AgentFlowDiagram() {
   const ref      = useRef<HTMLDivElement>(null);
@@ -89,19 +89,19 @@ export default function AgentFlowDiagram() {
         </div>
 
         {/* Steps */}
-        <div className="flex flex-col md:flex-row items-center justify-between">
+        <div className="flex flex-col md:flex-row items-start justify-center mx-auto w-full">
           {steps.map(({ icon: Icon, label, color, special }, i) => {
             // When fading out, all nodes become visually inactive via slow transition.
             // When lighting up, each node uses a fast transition.
             const isActive = !fadingOut && activeIndex >= i;
-            const dur = fadingOut ? `${FADE_OUT_MS}ms` : '450ms';
+            const dur = fadingOut ? `${FADE_OUT_MS}ms` : '350ms';
 
             return (
               <div key={label} className="flex flex-col md:flex-row items-center flex-1">
                 {/* Node */}
                 <div
-                  className="flex flex-col items-center text-center"
-                  style={{ minWidth: 80 }}
+                  className="flex flex-col items-center text-center mx-auto"
+                  style={{ minWidth: 80, maxWidth: 96 }}
                 >
                   <div
                     className="w-14 h-14 rounded-full flex items-center justify-center mb-2"
