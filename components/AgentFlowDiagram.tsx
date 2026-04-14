@@ -93,7 +93,6 @@ export default function AgentFlowDiagram() {
                     style={{
                       background: isActive ? color : 'hsl(228,14%,91%)',
                       boxShadow: isActive ? `0 0 0 6px ${color}22` : 'none',
-                      transform: isActive ? 'scale(1.08)' : 'scale(1)',
                     }}
                   >
                     <Icon
