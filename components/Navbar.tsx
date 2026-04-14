@@ -83,12 +83,6 @@ export default function Navbar() {
             ))}
             <Link
               href="/contacto"
-              className="relative px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 text-[hsl(233,18%,42%)] hover:text-[hsl(237,35%,26%)] hover:bg-[hsl(237,35%,26%)]/[0.07]"
-            >
-              Contacto
-            </Link>
-            <Link
-              href="/contacto"
               className="btn-primary ml-4"
               style={{ padding: '8px 20px', fontSize: '0.875rem', borderRadius: '8px' }}
             >
@@ -128,12 +122,6 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <Link
-              href="/contacto"
-              className="block px-4 py-2.5 rounded-lg text-sm font-medium transition-colors text-[hsl(233,18%,42%)] hover:bg-[hsl(228,18%,93%)]"
-            >
-              Contacto
-            </Link>
             <div className="pt-2">
               <Link
                 href="/contacto"
