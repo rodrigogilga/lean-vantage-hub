@@ -12,15 +12,11 @@ const steps = [
 ];
 
 const STEP_INTERVAL = 550;
-const PAUSE_AFTER   = 0;
-const FADE_OUT_MS   = 500;
-const PAUSE_BETWEEN = 200;
 
 export default function AgentFlowDiagram() {
   const ref      = useRef<HTMLDivElement>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const [activeIndex, setActiveIndex] = useState(-1);
-  const [fadingOut,   setFadingOut]   = useState(false);
   const [visible,     setVisible]     = useState(false);
 
   const addTimer = (fn: () => void, delay: number) => {
@@ -32,16 +28,15 @@ export default function AgentFlowDiagram() {
     timerRef.current.forEach(clearTimeout);
     timerRef.current = [];
 
-    setFadingOut(false);
+    // Instant reset — CSS transition 300ms on each node handles the smooth color change
     setActiveIndex(-1);
 
     steps.forEach((_, i) => {
       addTimer(() => setActiveIndex(i), i * STEP_INTERVAL);
     });
 
-    const fadeStart = steps.length * STEP_INTERVAL + PAUSE_AFTER;
-    addTimer(() => setFadingOut(true), fadeStart);
-    addTimer(() => scheduleLoop(), fadeStart + FADE_OUT_MS + PAUSE_BETWEEN);
+    // Restart immediately after the last node lights up
+    addTimer(() => scheduleLoop(), steps.length * STEP_INTERVAL);
   };
 
   useEffect(() => {
@@ -97,9 +92,8 @@ export default function AgentFlowDiagram() {
         */}
         <div className="hidden md:flex items-center w-full">
           {steps.map(({ icon: Icon, label, color, special }, i) => {
-            const isActive        = !fadingOut && activeIndex >= i;
-            const isJustActivated = !fadingOut && activeIndex === i;
-            const dur = fadingOut ? `${FADE_OUT_MS}ms` : '300ms';
+            const isActive        = activeIndex >= i;
+            const isJustActivated = activeIndex === i;
 
             return (
               <Fragment key={label}>
@@ -113,8 +107,7 @@ export default function AgentFlowDiagram() {
                     style={{
                       background: isActive ? color : 'hsl(228,14%,91%)',
                       boxShadow:  isActive ? `0 0 0 6px ${color}22` : '0 0 0 6px transparent',
-                      transition: `background ${dur} ease, box-shadow ${dur} ease`,
-                      // Pop when first lit; 'none' otherwise so it can replay next cycle
+                      transition: 'background 300ms ease, box-shadow 300ms ease',
                       animation:  isJustActivated ? 'nodePopIn 480ms ease-out' : 'none',
                     }}
                   >
@@ -122,7 +115,7 @@ export default function AgentFlowDiagram() {
                       size={22}
                       style={{
                         color: isActive ? '#ffffff' : 'hsl(233,18%,65%)',
-                        transition: `color ${dur} ease`,
+                        transition: 'color 300ms ease',
                       }}
                     />
                   </div>
@@ -133,36 +126,35 @@ export default function AgentFlowDiagram() {
                       maxWidth: 80,
                       color:      isActive ? (special ? '#7c3aed' : '#1a2356') : 'hsl(233,18%,65%)',
                       fontWeight: isActive ? 600 : 400,
-                      transition: `color ${dur} ease`,
+                      transition: 'color 300ms ease',
                     }}
                   >
                     {label}
                   </p>
 
-                  {/* Always rendered — opacity-only toggle to avoid height shift */}
                   <span
                     className="mt-1 text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded"
                     style={{
                       background: '#ede9fe',
                       color:      '#7c3aed',
                       opacity:    special && isActive ? 1 : 0,
-                      transition: `opacity ${dur} ease`,
+                      transition: 'opacity 300ms ease',
                     }}
                   >
                     clave
                   </span>
                 </div>
 
-                {/* Connector — flex-1 fills the space between nodes equally */}
+                {/* Connector */}
                 {i < steps.length - 1 && (
                   <div
                     className="flex-1"
                     style={{
                       height: 2,
-                      background: (!fadingOut && activeIndex > i)
+                      background: activeIndex > i
                         ? 'linear-gradient(90deg, #3d8ef0, #8b5cf6)'
                         : 'hsl(228,14%,88%)',
-                      transition: `background ${dur} ease`,
+                      transition: 'background 300ms ease',
                     }}
                   />
                 )}
@@ -174,9 +166,8 @@ export default function AgentFlowDiagram() {
         {/* Mobile: vertical list */}
         <div className="md:hidden flex flex-col gap-4">
           {steps.map(({ icon: Icon, label, color, special }, i) => {
-            const isActive        = !fadingOut && activeIndex >= i;
-            const isJustActivated = !fadingOut && activeIndex === i;
-            const dur = fadingOut ? `${FADE_OUT_MS}ms` : '300ms';
+            const isActive        = activeIndex >= i;
+            const isJustActivated = activeIndex === i;
 
             return (
               <div key={label} className="flex items-center gap-4">
@@ -185,7 +176,7 @@ export default function AgentFlowDiagram() {
                   style={{
                     background: isActive ? color : 'hsl(228,14%,91%)',
                     boxShadow:  isActive ? `0 0 0 5px ${color}22` : '0 0 0 5px transparent',
-                    transition: `background ${dur} ease, box-shadow ${dur} ease`,
+                    transition: 'background 300ms ease, box-shadow 300ms ease',
                     animation:  isJustActivated ? 'nodePopIn 480ms ease-out' : 'none',
                   }}
                 >
@@ -193,7 +184,7 @@ export default function AgentFlowDiagram() {
                     size={18}
                     style={{
                       color: isActive ? '#ffffff' : 'hsl(233,18%,65%)',
-                      transition: `color ${dur} ease`,
+                      transition: 'color 300ms ease',
                     }}
                   />
                 </div>
@@ -204,7 +195,7 @@ export default function AgentFlowDiagram() {
                     style={{
                       color:      isActive ? (special ? '#7c3aed' : '#1a2356') : 'hsl(233,18%,65%)',
                       fontWeight: isActive ? 600 : 400,
-                      transition: `color ${dur} ease`,
+                      transition: 'color 300ms ease',
                     }}
                   >
                     {label}
@@ -215,7 +206,7 @@ export default function AgentFlowDiagram() {
                       background: '#ede9fe',
                       color:      '#7c3aed',
                       opacity:    special && isActive ? 1 : 0,
-                      transition: `opacity ${dur} ease`,
+                      transition: 'opacity 300ms ease',
                       display: 'inline-block',
                     }}
                   >
