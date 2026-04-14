@@ -12,9 +12,9 @@ const steps = [
 ];
 
 const STEP_INTERVAL = 550;   // ms between each node lighting up
-const PAUSE_AFTER   = 1400;  // ms all nodes stay lit before fade-out
-const FADE_OUT_MS   = 700;   // ms for the fade-out CSS transition
-const PAUSE_BETWEEN = 500;   // ms pause after fade completes before restart
+const PAUSE_AFTER   = 800;   // ms all nodes stay lit before fade-out
+const FADE_OUT_MS   = 500;   // ms for the fade-out CSS transition
+const PAUSE_BETWEEN = 200;   // ms pause after fade completes before restart
 
 export default function AgentFlowDiagram() {
   const ref      = useRef<HTMLDivElement>(null);
@@ -94,7 +94,7 @@ export default function AgentFlowDiagram() {
             // When fading out, all nodes become visually inactive via slow transition.
             // When lighting up, each node uses a fast transition.
             const isActive = !fadingOut && activeIndex >= i;
-            const dur = fadingOut ? `${FADE_OUT_MS}ms` : '350ms';
+            const dur = fadingOut ? `${FADE_OUT_MS}ms` : '300ms';
 
             return (
               <div key={label} className="flex flex-col md:flex-row items-center flex-1">
