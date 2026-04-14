@@ -12,7 +12,7 @@ const steps = [
 ];
 
 const STEP_INTERVAL = 550;
-const PAUSE_AFTER   = 800;
+const PAUSE_AFTER   = 0;
 const FADE_OUT_MS   = 500;
 const PAUSE_BETWEEN = 200;
 
