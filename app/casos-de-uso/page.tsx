@@ -109,7 +109,7 @@ export default function Casos() {
             {casos.map(({ icon: Icon, title, problema, solucion, resultado, before, after }, i) => (
               <Reveal key={title} delay={i * 0.1}>
                 <div
-                  className="rounded-2xl overflow-hidden border h-full flex flex-col transition-all duration-300 shadow-[0_2px_8px_0_hsl(237_35%_26%/0.06)] hover:scale-[1.02] hover:shadow-[0_14px_32px_-6px_rgba(61,142,240,0.18)] hover:border-[rgba(61,142,240,0.3)]"
+                  className="rounded-2xl overflow-hidden border h-full flex flex-col transition-all duration-300 shadow-[0_2px_8px_0_hsl(237_35%_26%/0.06)] hover:scale-[1.03] hover:shadow-[0_14px_32px_-6px_rgba(61,142,240,0.18)] hover:border-[rgba(61,142,240,0.3)]"
                   style={{ background: '#ffffff', borderColor: 'hsl(228,14%,89%)' }}
                 >
                   <div className="p-6 pb-4">

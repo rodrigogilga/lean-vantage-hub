@@ -112,7 +112,7 @@ export default function Servicios() {
           {services.map(({ icon: Icon, title, description, escenario, incluye, noIncluye }, i) => (
             <Reveal key={title} delay={i * 0.07}>
               <div
-                className="rounded-2xl border overflow-hidden transition-all duration-300 shadow-[0_2px_8px_0_hsl(237_35%_26%/0.06)] hover:shadow-[0_14px_32px_-6px_rgba(61,142,240,0.15)] hover:border-[rgba(61,142,240,0.25)]"
+                className="rounded-2xl border overflow-hidden transition-all duration-300 shadow-[0_2px_8px_0_hsl(237_35%_26%/0.06)] hover:scale-[1.03] hover:shadow-[0_14px_32px_-6px_rgba(61,142,240,0.18)] hover:border-[rgba(61,142,240,0.3)]"
                 style={{ background: '#ffffff', borderColor: 'hsl(228,14%,89%)' }}
               >
                 {/* Header */}

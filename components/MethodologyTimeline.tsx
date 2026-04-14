@@ -61,7 +61,7 @@ function TimelineStep({
         style={{ transitionDelay: `${index * 0.15}s` }}
       >
         <div
-          className={`inline-block rounded-2xl p-6 border shadow-[0_2px_8px_0_hsl(237_35%_26%/0.06)] hover:shadow-[0_14px_32px_-6px_rgba(61,142,240,0.15)] transition-all duration-300`}
+          className={`inline-block rounded-2xl p-6 border shadow-[0_2px_8px_0_hsl(237_35%_26%/0.06)] hover:scale-[1.03] hover:shadow-[0_14px_32px_-6px_rgba(61,142,240,0.18)] hover:border-[rgba(61,142,240,0.3)] transition-all duration-300`}
           style={{ background: '#ffffff', borderColor: visible ? 'rgba(61,142,240,0.3)' : 'hsl(228,14%,89%)' }}
         >
           <p

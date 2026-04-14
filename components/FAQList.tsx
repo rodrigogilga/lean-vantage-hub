@@ -13,7 +13,7 @@ export default function FAQList({ question, answer }: FAQListProps) {
 
   return (
     <div
-      className="border rounded-xl overflow-hidden transition-all duration-300 shadow-[0_1px_6px_0_hsl(237_35%_26%/0.05)] hover:scale-[1.02] hover:shadow-[0_8px_20px_-4px_hsl(237_35%_26%/0.14)]"
+      className="border rounded-xl overflow-hidden transition-all duration-300 shadow-[0_2px_8px_0_hsl(237_35%_26%/0.06)] hover:scale-[1.03] hover:shadow-[0_14px_32px_-6px_rgba(61,142,240,0.18)] hover:border-[rgba(61,142,240,0.3)]"
       style={{ borderColor: 'hsl(228,14%,89%)' }}
     >
       <button
