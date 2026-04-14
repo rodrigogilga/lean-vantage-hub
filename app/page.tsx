@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, Bot, Cpu, Zap, Plug, LayoutDashboard, Search } from 'lucide-react'
+import { ArrowRight, Bot, Zap, Plug, LayoutDashboard, BarChart3, Link2 } from 'lucide-react'
 import CTASection from '@/components/CTASection'
 import Reveal from '@/components/Reveal'
 import AnimatedCounters from '@/components/AnimatedCounters'
@@ -28,22 +28,22 @@ const serviceSchema = {
 
 const pillars = [
   {
-    icon: Search,
-    title: 'Consultoría de procesos',
+    icon: Zap,
+    title: 'Eliminamos tareas manuales',
     description:
-      'Mapeamos tu operación, detectamos cuellos de botella y definimos un plan de automatización medible.',
+      'Tu equipo deja de perder tiempo en capturas, reenvíos y seguimientos repetitivos. Automatizamos lo que no necesita intervención humana.',
   },
   {
-    icon: Cpu,
-    title: 'Automatización con IA',
+    icon: Link2,
+    title: 'Conectamos tus sistemas',
     description:
-      'Flujos inteligentes para tareas repetitivas, aprobaciones, alertas y operaciones internas.',
+      'Tu CRM, calendario, WhatsApp, hojas de cálculo y herramientas internas trabajando en sincronía — sin recapturas ni datos duplicados.',
   },
   {
-    icon: Plug,
-    title: 'Integraciones y APIs',
+    icon: BarChart3,
+    title: 'Te damos visibilidad en tiempo real',
     description:
-      'Conectamos tus herramientas (CRM/ERP/Sheets/WhatsApp) con webhooks, APIs y bases de datos.',
+      'Dashboards, alertas automáticas y reportes que llegan solos. Tomas decisiones con datos actualizados, no con intuición.',
   },
 ]
 
@@ -175,7 +175,7 @@ export default function Home() {
                 ¿Qué hacemos?
               </h2>
               <p className="text-lg max-w-2xl mx-auto leading-relaxed" style={{ color: 'hsl(233,18%,42%)' }}>
-                Tres pilares para transformar tu operación
+                Lo que cambia cuando automatizas
               </p>
             </div>
           </Reveal>
