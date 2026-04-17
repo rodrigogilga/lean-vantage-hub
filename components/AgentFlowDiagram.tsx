@@ -61,7 +61,7 @@ export default function AgentFlowDiagram() {
   }, []);
 
   return (
-    <div ref={ref} className="py-14 px-4" style={{ background: 'rgba(255,255,255,0.75)' }}>
+    <div ref={ref} className="py-14 px-4" style={{ background: '#f0f2f8' }}>
       {/* Pop keyframe — scoped inside the component */}
       <style>{`
         @keyframes nodePopIn {

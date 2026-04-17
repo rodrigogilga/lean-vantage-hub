@@ -1,12 +1,16 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 
-interface Counter { prefix?: string; value: number; suffix: string; label: string }
+interface Counter {
+  value: number;
+  label: string;
+  barColor: string;
+}
 
 const counters: Counter[] = [
-  { prefix: '+', value: 50,  suffix: '',   label: 'procesos automatizados' },
-  { prefix: '+', value: 500, suffix: '',   label: 'horas ahorradas al mes' },
-  { prefix: '+', value: 20,  suffix: '',   label: 'empresas asesoradas' },
+  { value: 50,  label: 'procesos automatizados', barColor: '#1a2560' },
+  { value: 500, label: 'horas ahorradas al mes',  barColor: '#1a2560' },
+  { value: 20,  label: 'empresas asesoradas',     barColor: '#1a2560' },
 ];
 
 function useCount(target: number, duration = 2000, active: boolean) {
@@ -19,7 +23,6 @@ function useCount(target: number, duration = 2000, active: boolean) {
     const step = (timestamp: number) => {
       if (!start) start = timestamp;
       const progress = Math.min((timestamp - start) / duration, 1);
-      // ease-out
       const eased = 1 - Math.pow(1 - progress, 3);
       setCount(Math.floor(eased * target));
       if (progress < 1) requestAnimationFrame(step);
@@ -30,7 +33,7 @@ function useCount(target: number, duration = 2000, active: boolean) {
   return count;
 }
 
-function CounterItem({ prefix = '', value, suffix, label }: Counter) {
+function CounterItem({ value, label, barColor, isLast }: Counter & { isLast: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(false);
   const count = useCount(value, 2000, active);
@@ -47,15 +50,40 @@ function CounterItem({ prefix = '', value, suffix, label }: Counter) {
   }, []);
 
   return (
-    <div ref={ref} className="text-center px-6">
+    <div
+      ref={ref}
+      className={`flex-1 flex sm:flex-col flex-row items-start p-5 sm:p-8${!isLast ? ' border-b sm:border-b-0 sm:border-r border-[#e8edf8]' : ''}`}
+    >
+      {/* Mobile: vertical bar 3×36px */}
       <div
-        className="text-4xl md:text-5xl font-bold mb-2 tabular-nums"
-        style={{ color: '#1a2356' }}
-      >
-        {prefix}{count}{suffix}
-      </div>
-      <div className="text-sm md:text-base" style={{ color: 'hsl(233,18%,48%)' }}>
-        {label}
+        className="sm:hidden flex-shrink-0 mr-4 mt-1"
+        style={{ width: 3, height: 36, background: barColor, borderRadius: 2 }}
+      />
+      {/* Desktop: horizontal bar 28×3px */}
+      <div
+        className="hidden sm:block mb-3"
+        style={{ width: 28, height: 3, background: barColor, borderRadius: 2 }}
+      />
+
+      <div>
+        <div
+          className="tabular-nums"
+          style={{ fontSize: '2.8rem', fontWeight: 700, color: '#1a2560', lineHeight: 1.1 }}
+        >
+          <span style={{ color: '#1a2560' }}>+</span>{count}
+        </div>
+        <div
+          style={{
+            fontSize: '0.78rem',
+            textTransform: 'uppercase',
+            letterSpacing: '0.08em',
+            color: '#6b7aa1',
+            marginTop: 8,
+            fontWeight: 500,
+          }}
+        >
+          {label}
+        </div>
       </div>
     </div>
   );
@@ -63,11 +91,14 @@ function CounterItem({ prefix = '', value, suffix, label }: Counter) {
 
 export default function AnimatedCounters() {
   return (
-    <section className="py-14 px-4" style={{ background: 'rgba(255,255,255,0.7)' }}>
+    <section style={{ background: '#f0f2f8', padding: '3rem 1rem' }}>
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-[hsl(228,14%,89%)]">
-          {counters.map((c) => (
-            <CounterItem key={c.label} {...c} />
+        <div
+          className="flex flex-col sm:flex-row"
+          style={{ background: '#fff', borderRadius: 16, overflow: 'hidden' }}
+        >
+          {counters.map((c, i) => (
+            <CounterItem key={c.label} {...c} isLast={i === counters.length - 1} />
           ))}
         </div>
       </div>

@@ -10,6 +10,8 @@
   --muted-fg: hsl(233, 18%, 42%);
   --border: hsl(228, 14%, 89%);
   --gradient-hero: linear-gradient(145deg, hsl(237, 40%, 17%) 0%, hsl(240, 36%, 22%) 60%, hsl(237, 35%, 26%) 100%);
+  --font-display: var(--font-jakarta), 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body: var(--font-inter), 'Inter', system-ui, sans-serif;
 }
 
 * {
@@ -23,10 +25,19 @@ html {
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(180deg, #f8faff, #f2f5ff, #f6f8ff);
-  background-attachment: fixed;
+  background: #f0f2f8;
   color: hsl(237, 35%, 26%);
   min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  font-weight: 600;
 }
 
 /* Subtle noise texture */
@@ -164,6 +175,34 @@ body::before {
   background: rgba(61, 142, 240, 0.1);
 }
 
+/* ── Hero background animations ── */
+@keyframes blob-drift {
+  0%, 100% { transform: translate(0,    0)    scale(1);    }
+  33%       { transform: translate(32px, -22px) scale(1.06); }
+  66%       { transform: translate(-18px, 16px) scale(0.96); }
+}
+
+@keyframes blob-drift-2 {
+  0%, 100% { transform: translate(0,     0)    scale(1);    }
+  33%       { transform: translate(-28px, 22px) scale(1.04); }
+  66%       { transform: translate(22px, -16px) scale(0.97); }
+}
+
+@keyframes blob-drift-3 {
+  0%, 100% { transform: translate(0,    0)    scale(1);    }
+  50%       { transform: translate(20px, 28px) scale(1.08); }
+}
+
+@keyframes grid-shift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 48px 48px; }
+}
+
+.hero-blob-1 { animation: blob-drift   14s ease-in-out infinite; }
+.hero-blob-2 { animation: blob-drift-2 18s ease-in-out infinite; }
+.hero-blob-3 { animation: blob-drift-3 11s ease-in-out infinite; }
+.hero-grid   { animation: grid-shift   28s linear        infinite; }
+
 /* ── Reduced motion overrides ── */
 @media (prefers-reduced-motion: reduce) {
   .btn-primary::after         { animation: none; }
@@ -172,4 +211,8 @@ body::before {
   .animate-fade-in,
   .animate-slide-left,
   .animate-slide-right        { animation: none; }
+  .hero-blob-1,
+  .hero-blob-2,
+  .hero-blob-3,
+  .hero-grid                  { animation: none; }
 }
