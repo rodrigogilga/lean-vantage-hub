@@ -18,10 +18,10 @@ export default function HeroAnimation() {
     const scenesEl = scenesRef.current;
     if (!scenesEl) return;
 
-    const scenes = [...scenesEl.querySelectorAll<HTMLElement>('.ha-scene')];
+    const scenes = Array.from(scenesEl.querySelectorAll<HTMLElement>('.ha-scene'));
     const stageText = document.getElementById('ha-stage-text');
     const stageDot = document.getElementById('ha-stage-dot');
-    const progressSpans = [...document.querySelectorAll<HTMLElement>('#ha-progress > span')];
+    const progressSpans = Array.from(document.querySelectorAll<HTMLElement>('#ha-progress > span'));
 
     function runScene4Counters(s: HTMLElement) {
       const rows: [string, string, number][] = [
