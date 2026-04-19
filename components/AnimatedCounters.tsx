@@ -91,11 +91,11 @@ function CounterItem({ value, label, barColor, isLast }: Counter & { isLast: boo
 
 export default function AnimatedCounters() {
   return (
-    <section style={{ background: '#f0f2f8', padding: '3rem 1rem' }}>
+    <section style={{ background: '#ffffff', padding: '3rem 1rem' }}>
       <div className="container mx-auto">
         <div
           className="flex flex-col sm:flex-row"
-          style={{ background: '#fff', borderRadius: 16, overflow: 'hidden' }}
+          style={{ background: '#ffffff', borderRadius: 16, overflow: 'hidden', border: '1px solid hsl(228,18%,91%)', boxShadow: '0 4px 24px rgba(26,37,96,0.06)' }}
         >
           {counters.map((c, i) => (
             <CounterItem key={c.label} {...c} isLast={i === counters.length - 1} />

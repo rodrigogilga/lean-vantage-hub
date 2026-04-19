@@ -31,21 +31,17 @@ export default function Navbar() {
   const isActive = (path: string) =>
     path === '/' ? pathname === '/' : pathname.startsWith(path)
 
-  const onDark = pathname === '/' && !scrolled
+  const onDark = false
 
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/90 backdrop-blur-md shadow-[0_1px_3px_0_hsl(237_35%_26%/0.06)] border-b border-[hsl(228,14%,89%)]'
-          : 'bg-transparent'
+          ? 'bg-white/95 backdrop-blur-md shadow-[0_1px_3px_0_hsl(237_35%_26%/0.06)] border-b border-[hsl(228,14%,89%)]'
+          : 'bg-white/80 backdrop-blur-sm border-b border-[hsl(228,14%,93%)]'
       }`}
       style={{ animation: 'fadeIn 0.5s cubic-bezier(0.25,0.1,0.25,1)' }}
     >
-      {/* Subtle dark gradient behind nav when on dark hero */}
-      {onDark && (
-        <div aria-hidden="true" className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(7,16,43,0.5) 0%, transparent 100%)' }} />
-      )}
       <div className="container mx-auto px-4 relative">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}

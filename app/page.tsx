@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Image from 'next/image'
 import { ArrowRight, Bot, Plug, LayoutDashboard } from 'lucide-react'
 import CTASection from '@/components/CTASection'
 import Reveal from '@/components/Reveal'
 import AnimatedCounters from '@/components/AnimatedCounters'
 import AgentFlowDiagram from '@/components/AgentFlowDiagram'
+import HeroAnimation from '@/components/HeroAnimation'
 
 export const metadata: Metadata = {
   title: 'Leanvan - Automatización y Agentes de IA en Saltillo',
@@ -131,32 +131,42 @@ export default function Home() {
       />
 
       {/* Hero */}
-      <section className="relative pt-20 pb-0 md:pt-28 px-4 overflow-hidden" style={{ background: '#07102b' }}>
-        {/* Animated dot grid — white on dark */}
+      <section className="relative pt-20 pb-0 md:pt-28 px-4 overflow-hidden" style={{ background: '#ffffff' }}>
+        {/* Blueprint grid */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(79,126,248,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(79,126,248,0.045) 1px, transparent 1px)',
+            backgroundSize: '64px 64px',
+          }}
+        />
+        {/* Animated dot accent grid */}
         <div
           aria-hidden="true"
           className="hero-grid absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px)',
+            backgroundImage: 'radial-gradient(circle, rgba(79,126,248,0.13) 1px, transparent 1px)',
             backgroundSize: '48px 48px',
           }}
         />
 
-        {/* Aurora blobs — scaled for mobile */}
+        {/* Soft color blobs — subtle on white */}
         <div
           aria-hidden="true"
           className="hero-blob-1 absolute top-[-80px] left-[10%] w-[320px] h-[280px] md:w-[750px] md:h-[550px] rounded-full blur-[80px] md:blur-[130px] pointer-events-none"
-          style={{ background: 'hsl(225 85% 55% / 0.38)' }}
+          style={{ background: 'hsl(225 85% 62% / 0.09)' }}
         />
         <div
           aria-hidden="true"
           className="hero-blob-2 absolute top-[10px] right-[0%] w-[260px] h-[240px] md:w-[560px] md:h-[460px] rounded-full blur-[70px] md:blur-[110px] pointer-events-none"
-          style={{ background: 'hsl(258 70% 60% / 0.28)' }}
+          style={{ background: 'hsl(258 70% 62% / 0.07)' }}
         />
         <div
           aria-hidden="true"
           className="hero-blob-3 absolute bottom-[40px] left-[-10%] w-[240px] h-[200px] md:w-[480px] md:h-[380px] rounded-full blur-[70px] md:blur-[120px] pointer-events-none"
-          style={{ background: 'hsl(195 80% 50% / 0.2)' }}
+          style={{ background: 'hsl(195 80% 55% / 0.06)' }}
         />
 
         {/* Decorative rings — desktop only */}
@@ -167,8 +177,8 @@ export default function Home() {
             top: '-180px', right: '-180px',
             width: 560, height: 560,
             borderRadius: '50%',
-            border: '1px solid rgba(79,126,248,0.12)',
-            boxShadow: 'inset 0 0 80px rgba(79,126,248,0.06)',
+            border: '2px solid rgba(79,126,248,0.12)',
+            boxShadow: 'inset 0 0 80px rgba(79,126,248,0.04)',
           }}
         />
         <div
@@ -178,7 +188,17 @@ export default function Home() {
             top: '-80px', right: '-80px',
             width: 360, height: 360,
             borderRadius: '50%',
-            border: '1px solid rgba(124,157,250,0.1)',
+            border: '1px solid rgba(79,126,248,0.1)',
+          }}
+        />
+        <div
+          aria-hidden="true"
+          className="hidden md:block absolute pointer-events-none"
+          style={{
+            top: '60px', right: '60px',
+            width: 180, height: 180,
+            borderRadius: '50%',
+            border: '1px solid rgba(79,126,248,0.08)',
           }}
         />
 
@@ -186,15 +206,20 @@ export default function Home() {
           <div className="w-full flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
             {/* Text */}
             <div className="flex-1 text-center lg:text-left space-y-5 md:space-y-7">
+              {/* Accent line above heading */}
+              <div
+                className="hidden lg:block animate-fade-up"
+                style={{ width: 48, height: 4, background: 'linear-gradient(90deg, #4f7ef8, #a5beff)', borderRadius: 2 }}
+              />
               <h1
                 className="text-[2rem] md:text-[3rem] lg:text-[3.5rem] font-semibold max-w-xl lg:max-w-[560px] mx-auto lg:mx-0 animate-fade-up"
-                style={{ color: '#ffffff', letterSpacing: '-0.025em', lineHeight: 1.15, textWrap: 'balance' } as React.CSSProperties}
+                style={{ color: '#0a1628', letterSpacing: '-0.025em', lineHeight: 1.15, textWrap: 'balance' } as React.CSSProperties}
               >
                 Transformamos procesos en sistemas que trabajan por ti.
               </h1>
               <p
                 className="text-[1rem] md:text-[1.1rem] max-w-md lg:max-w-[460px] mx-auto lg:mx-0 animate-fade-up delay-150"
-                style={{ color: 'rgba(180,200,255,0.78)', lineHeight: 1.75, fontWeight: 400 }}
+                style={{ color: '#5a6b8a', lineHeight: 1.75, fontWeight: 400 }}
               >
                 En Leanvan diseñamos automatizaciones, agentes de IA y aplicaciones internas para
                 mejorar tiempos, control y escalabilidad.
@@ -204,39 +229,24 @@ export default function Home() {
                   Contáctanos
                   <ArrowRight size={18} />
                 </Link>
-                <Link href="/casos-de-uso" className="btn-secondary-dark justify-center">
+                <Link href="/casos-de-uso" className="btn-secondary justify-center">
                   Ver casos de uso
                 </Link>
               </div>
             </div>
 
-            {/* Hero image */}
+            {/* Hero animation */}
             <div className="flex-1 w-full max-w-sm sm:max-w-lg lg:max-w-none animate-fade-up delay-200">
-              <div
-                className="rounded-2xl overflow-hidden transition-all duration-300 hover:scale-[1.02]"
-                style={{
-                  background: '#0d1a3e',
-                  boxShadow: '0 0 0 1px rgba(79,126,248,0.18), 0 24px 60px -8px rgba(0,0,0,0.5), 0 0 60px -20px rgba(79,126,248,0.22)',
-                }}
-              >
-                <Image
-                  src="/hero-illustration.jpg"
-                  alt="Plataforma de automatización con IA, dashboards y agentes de Leanvan"
-                  width={800}
-                  height={600}
-                  className="w-full h-auto object-cover"
-                  priority
-                />
-              </div>
+              <HeroAnimation />
             </div>
           </div>
         </div>
 
-        {/* Gradient transition to light sections */}
+        {/* Subtle bottom fade to white */}
         <div
           aria-hidden="true"
-          className="absolute bottom-0 left-0 right-0 h-32 md:h-40 pointer-events-none"
-          style={{ background: 'linear-gradient(to bottom, transparent, #F0F2F8)' }}
+          className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"
+          style={{ background: 'linear-gradient(to bottom, transparent, #ffffff)' }}
         />
       </section>
 
@@ -244,7 +254,7 @@ export default function Home() {
       <AnimatedCounters />
 
       {/* What we do — 3 pillars */}
-      <section className="py-14 md:py-24 px-4 relative overflow-hidden" style={{ background: '#F0F2F8' }}>
+      <section className="py-14 md:py-24 px-4 relative overflow-hidden" style={{ background: '#f8faff' }}>
         {/* Mesh gradient blobs */}
         <div aria-hidden="true" className="absolute pointer-events-none" style={{ top: '-60px', right: '10%', width: 500, height: 400, borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(79,126,248,0.07) 0%, transparent 65%)', filter: 'blur(40px)' }} />
         <div aria-hidden="true" className="absolute pointer-events-none" style={{ bottom: '-40px', left: '5%', width: 400, height: 350, borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(26,37,96,0.06) 0%, transparent 65%)', filter: 'blur(40px)' }} />
@@ -312,14 +322,14 @@ export default function Home() {
       </section>
 
       {/* Divider */}
-      <div className="px-4" style={{ background: '#F0F2F8' }}>
+      <div className="px-4" style={{ background: '#ffffff' }}>
         <div className="container mx-auto">
-          <hr style={{ borderColor: 'hsl(228,14%,89%)', borderTopWidth: '1px' }} />
+          <hr style={{ borderColor: 'hsl(228,14%,91%)', borderTopWidth: '1px' }} />
         </div>
       </div>
 
       {/* Services */}
-      <section className="py-14 md:py-24 px-4 relative overflow-hidden" style={{ background: '#F0F2F8' }}>
+      <section className="py-14 md:py-24 px-4 relative overflow-hidden" style={{ background: '#ffffff' }}>
         {/* Mesh gradient blobs */}
         <div aria-hidden="true" className="absolute pointer-events-none" style={{ top: '-40px', left: '15%', width: 500, height: 380, borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(79,126,248,0.06) 0%, transparent 65%)', filter: 'blur(40px)' }} />
         <div aria-hidden="true" className="absolute pointer-events-none" style={{ bottom: '-60px', right: '8%', width: 420, height: 340, borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(26,37,96,0.05) 0%, transparent 65%)', filter: 'blur(40px)' }} />
